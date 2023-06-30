@@ -569,7 +569,7 @@ class TuringMachine:
         self.blank_symbol = 'b'
         self.input_symbols = {'0', '1', 'X', 'b'}
         self.initial_state = 'q0'
-        self.accepting_states = {'q9'}
+        self.accepting_states = {'q12'}
         self.transitions = {('q0', 'b'): ('q12', 'b', 1),
                             ('q0', '0'): ('q1', '0', 1),
 
