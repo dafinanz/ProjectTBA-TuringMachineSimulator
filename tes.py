@@ -334,7 +334,7 @@ class TuringMachine:
                             ('q12', '0'): ('q12', '0', -1),
                             ('q12', 'B'): ('q6', 'B', 1),
 
-                            ('q13', 'Z'): ('q13', '0', 1),
+                            ('q13', 'Z'): ('q13', 'Z', 1),
                             ('q13', 'X'): ('q13', '0', 1),
                             ('q13', '1'): ('q14', '1', 1),
 
@@ -962,6 +962,8 @@ if __name__ == '__main__':
             tape[index] = '0'
             index += 1
         else:
+          tape[index] = '+'
+          index += 1
           for i in range(angka2):
               tape[index] = '0'
               index += 1
