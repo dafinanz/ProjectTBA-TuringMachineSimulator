@@ -569,7 +569,7 @@ class TuringMachine:
         self.blank_symbol = 'b'
         self.input_symbols = {'0', '1', 'X', 'b'}
         self.initial_state = 'q0'
-        self.accepting_states = {'q12'}
+        self.accepting_states = {'q9'}
         self.transitions = {('q0', 'b'): ('q12', 'b', 1),
                             ('q0', '0'): ('q1', '0', 1),
 
@@ -643,10 +643,86 @@ class TuringMachine:
                             ('q11', 'Z'): ('q11', '0', 1),
                             ('q11', '0'): ('q11', '0', 1),
                             ('q11', 'b'): ('q12', 'b', -1),
-
+                            
                            }
 
-  
+    def squareroot(self):
+        self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12',
+                        'q13', 'q14', 'q15', 'q16', 'q17', 'q18', 'q19', 'q20', 'q21', 'q22', 'q23'}
+        self.symbols = {'0', '1', 'X', 'b'}
+        self.blank_symbol = 'b'
+        self.input_symbols = {'0', '1', 'X', 'b'}
+        self.initial_state = 'q0'
+        self.accepting_states = {'q9'}
+        self.transitions = {
+                            ('q0', '0'): ('q1', 'b', 1),
+
+                            ('q1', '0'): ('q1', '0', 1),
+                            ('q1', '1'): ('q2', '1', 1),
+
+                            ('q2', 'b'): ('q3', '0', 1),
+
+                            ('q3', 'b'): ('q4', 'b', -1),
+                            
+                            ('q4', '0'): ('q4', '0', -1),
+                            ('q4', '1'): ('q5', '1', -1),
+
+                            ('q5', '0'): ('q5', '0', -1),
+                            ('q5', 'b'): ('q6', 'b', 1),
+
+                            ('q6', '1'): ('q7', '1', 1),
+                            ('q6', '0'): ('q10', 'b', 1),
+
+                            ('q7', '0'): ('q7', '0', 1),
+                            ('q7', 'X'): ('q7', 'X', 1),
+                            ('q7', 'b'): ('q8', 'b', -1),
+
+                            ('q8', '0'): ('q8', '0', -1),
+                            ('q8', 'X'): ('q8', '0', -1),
+                            ('q8', '1'): ('q9', 'b', 1),
+
+                            ('q10', '0'): ('q10', '0', 1),
+                            ('q10', '1'): ('q11', '1', 1),
+                        
+                            ('q11', 'X'): ('q7', 'X', 1),
+                            ('q11', '0'): ('q12', 'X', -1),
+
+                            ('q12', '1'): ('q13', '1', -1),
+
+                            ('q13', '0'): ('q13', '0', -1),
+                            ('q13', 'b'): ('q14', 'b', 1),
+
+                            ('q14', '1'): ('q7', '1', 1),
+                            ('q14', '0'): ('q15', 'b', 1),
+
+                            ('q15', '1'): ('q11', '1', 1),
+                            ('q15', '0'): ('q16', 'b', 1),
+
+                            ('q16', '0'): ('q16', '0', 1),
+                            ('q16', '1'): ('q17', '1', 1),
+
+                            ('q17', 'X'): ('q17', 'X', 1),
+                            ('q17', 'b'): ('q18', '0', -1),
+                            ('q17', '0'): ('q21', 'X', -1),
+
+                            ('q18', 'X'): ('q18', '0', -1),
+                            ('q18', '1'): ('q19', '1', -1),
+
+                            ('q19', '0'): ('q19', '0', -1),
+                            ('q19', 'b'): ('q20', 'b', 1),
+
+                            ('q20', '1'): ('q7', '1', 1),
+                            ('q20', '0'): ('q16', 'b', 1),
+
+                            ('q21', 'X'): ('q21', 'X', -1),
+                            ('q21', '1'): ('q22', '1', -1),
+
+                            ('q22', '0'): ('q22', '0', -1),
+                            ('q22', 'b'): ('q23', 'b', 1),
+
+                            ('q23', '1'): ('q7', '1', 1),
+                            ('q23', '0'): ('q15', 'b', 1),
+        }
             # end
 
     # 3) sama n0.3 yg diatas
@@ -689,7 +765,7 @@ class TuringMachine:
 
 
 if __name__ == '__main__':
-    print('Turing Machine Simulator\n\n1. Tambah\n2. Kurang\n3. Kali\n4. Bagi\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n')
+    print('Turing Machine Simulator\n\n1. Tambah\n2. Kurang\n3. Kali\n4. Bagi\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n')
     menu = input('pilihan : ')
 
     if menu == '1':
@@ -985,5 +1061,37 @@ if __name__ == '__main__':
 
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
+
+    if menu == '8':
+        print('\n\nAkar Kuadrat')
+        tm = TuringMachine()
+        angka1 = int(input('\nAkar Kuadrat : '))
+        tape = {0: 'b'}
+        index = 0
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+            tape[index] = '1'
+            index == 1
+
+        tm.squareroot()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+
+        sumOfZero = 0
+
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+
+        result = sumOfZero
+        print(f'Hasil = {result}')
+
 
    
