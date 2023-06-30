@@ -38,8 +38,7 @@ class TuringMachine:
         self.tape_string = []
 
     def additionMode(self):
-        self.states = {'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
-                        'q11', 'q12', 'q13'}
+        self.states = {'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13'}
         self.symbols = {'-0', '-1', '0', '1', 'b'}
         self.blank_symbol = 'b'
         self.input_symbols = {'0', '1', '-0', '-1'}
@@ -87,7 +86,7 @@ class TuringMachine:
 
                             ('q10', '-0'): ('q10', '-0', -1),
                             ('q10', 'b'): ('q1', 'b', 1),
-                           }
+                            }
 
     def substraction(self):
         self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
@@ -164,8 +163,7 @@ class TuringMachine:
 
                             ('q22', '-'): ('q6', '0', 1),
 
-                           }
-
+                            }
 
     def multiplicationMode(self):
         self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
@@ -268,8 +266,7 @@ class TuringMachine:
                             ('q18', '-'): ('q18', 'b', 1),
                             ('q18', '0'): ('q18', 'b', 1),
                             ('q18', '#'): ('q19', 'b', 1),
-        }
-
+                            }
 
     def division(self):
         self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
@@ -356,9 +353,7 @@ class TuringMachine:
                             ('q16', '1'): ('q16', 'B', 1),
                             ('q16', 'Z'): ('q16', 'B', 1),
                             ('q16', 'B'): ('q17', 'B', -1),
-                                    
                             }
-
 
     def faktorialMode(self):
         self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
@@ -476,8 +471,7 @@ class TuringMachine:
 
                             ('q34', '0'): ('q34', '0', 1),
                             ('q34', 'X'): ('q35', '0', 1),
-
-        }
+                            }
 
     def powerMode(self):
         self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
@@ -597,78 +591,47 @@ class TuringMachine:
         self.transitions = {('q0', 'b'): ('q12', 'b', 1),
                             ('q0', '0'): ('q1', '0', 1),
 
-                            # ('q1', 'b'): ('q11', 'b', -1),
-                            # ('q1', '0'): ('q2', '0', 1),
                             ('q1', 'b'): ('q2', 'b', -1),
                             ('q1', '0'): ('q3', '0', 1),
 
-                            # ('q2', 'b'): ('q11', 'b', -1),
-                            # ('q2', '0'): ('q3', '#', 1),
                             ('q2', '0'): ('q12', 'b', 1),
 
-                            # ('q3', 'b'): ('q7', 'b', -1),
-                            # ('q3', '0'): ('q4', '#', -1),
-                            # ('q3', '#'): ('q3', '#', 1),
                             ('q3', 'b'): ('q2', 'b', -1),
                             ('q3', '0'): ('q4', 'X', 1),
 
-                            # ('q4', 'b'): ('q5', 'b', 1),
-                            # ('q4', '0'): ('q4', '0', -1),
-                            # ('q4', '1'): ('q4', '1', -1),
-                            # ('q4', '#'): ('q4', '#', -1),
                             ('q4', 'b'): ('q5', 'b', -1),
                             ('q4', '0'): ('q8', 'X', -1),
                             ('q4', 'X'): ('q4', 'X', 1),
 
-                            # ('q5', '0'): ('q5', '1', 1),
-                            # ('q5', '1'): ('q6', '0', 1),
-                            # ('q5', '#'): ('q6', '0', 1),
                             ('q5', 'X'): ('q5', 'b', -1),
                             ('q5', '0'): ('q5', '0', -1),
                             ('q5', 'Z'): ('q5', 'Z', -1),
                             ('q5', 'b'): ('q6', 'b', 1),
 
-                            # ('q6', '0'): ('q6', '0', 1),
-                            # ('q6', '1'): ('q6', '1', 1),
-                            # ('q6', '#'): ('q3', '#', 1),
                             ('q6', 'Z'): ('q6', '0', 1),
                             ('q6', '0'): ('q7', '0', 1),
 
-                            # ('q7', 'b'): ('q8', 'b', 1),
-                            # ('q7', '0'): ('q7', '0', -1),
-                            # ('q7', '1'): ('q7', '1', -1),
-                            # ('q7', '#'): ('q7', 'b', -1),
                             ('q7', 'Z'): ('q7', '0', 1),
                             ('q7', '0'): ('q11', '0', 1),
                             ('q7', 'b'): ('q2', 'b', -1),
 
-                            # ('q8', '0'): ('q9', '0', 1),
-                            # ('q8', '1'): ('q8', '0', 1),
                             ('q8', 'X'): ('q8', 'X', -1),
                             ('q8', '0'): ('q8', '0', -1),
                             ('q8', 'Z'): ('q8', 'Z', -1),
                             ('q8', 'b'): ('q9', 'b', 1),
 
-                            # ('q9', 'b'): ('q11', 'b', -1),
-                            # ('q9', '0'): ('q10', '0', 1),
-                            # ('q9', '1'): ('q9', '0', 1),
                             ('q9', '0'): ('q9', 'Z', 1),
                             ('q9', 'X'): ('q10', '0', 1),
                             ('q9', 'Z'): ('q10', '0', 1),
 
-                            # ('q10', 'b'): ('q12', 'b', -1),
-                            # ('q10', '0'): ('q10', '0', 1),
-                            # ('q10', '1'): ('q10', '0', 1),
                             ('q10', '0'): ('q10', '0', 1),
                             ('q10', 'Z'): ('q10', 'Z', 1),
                             ('q10', 'X'): ('q4', 'X', 1),
 
-                            # ('q11', '0'): ('q12', 'b', 1),
                             ('q11', 'Z'): ('q11', '0', 1),
                             ('q11', '0'): ('q11', '0', 1),
                             ('q11', 'b'): ('q12', 'b', -1),
-                            
-                           }
+                            }
 
     def squareroot(self):
         self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12',
@@ -746,7 +709,7 @@ class TuringMachine:
 
                             ('q23', '1'): ('q7', '1', 1),
                             ('q23', '0'): ('q15', 'b', 1),
-        }
+                            }
             # end
 
     # 3) sama n0.3 yg diatas
@@ -801,27 +764,27 @@ if __name__ == '__main__':
         index = 1
 
         if angka1 < 0:
-          angka1 = angka1 * -1
-          for i in range(angka1):
-            tape[index] = '-0'
-            index += 1
+            angka1 = angka1 * -1
+            for i in range(angka1):
+                tape[index] = '-0'
+                index += 1
         else:
-          for i in range(angka1):
-              tape[index] = '0'
-              index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
 
         tape[index] = '1'
         index += 1
 
         if angka2 < 0:
-          angka2 = angka2 * -1
-          for i in range(angka2):
-            tape[index] = '-0'
-            index += 1
+            angka2 = angka2 * -1
+            for i in range(angka2):
+                tape[index] = '-0'
+                index += 1
         else:
-          for i in range(angka2):
-              tape[index] = '0'
-              index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
 
         tm.additionMode()
         tm.initialize(tape)
@@ -834,10 +797,10 @@ if __name__ == '__main__':
 
         n = 0
         for i in tm.tape.values():
-          if i == '0':
-            n += 1
-          elif i == '-0':
-            n -= 1
+            if i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
         print('Hasil = ', n)
 
     elif menu == '2':
@@ -850,31 +813,31 @@ if __name__ == '__main__':
 
         index -= 1
         if angka1 < 0:
-          angka1 = angka1 * -1
-          tape[index] = '-'
-          index += 1
-          for i in range(angka1):
-            tape[index] = '0'
+            angka1 = angka1 * -1
+            tape[index] = '-'
             index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
         else:
-          for i in range(angka1):
-              tape[index] = '0'
-              index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
 
         tape[index] = '1'
         index += 1
 
         if angka2 < 0:
-          angka2 = angka2 * -1
-          tape[index] = '-'
-          index += 1
-          for i in range(angka2):
-            tape[index] = '0'
+            angka2 = angka2 * -1
+            tape[index] = '-'
             index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
         else:
-          for i in range(angka2):
-              tape[index] = '0'
-              index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
 
         tm.substraction()
         tm.initialize(tape)
@@ -885,8 +848,7 @@ if __name__ == '__main__':
 
         print('Accepted : ', tm.accepted_input())
 
-
-    if menu == '3':
+    elif menu == '3':
         print('\n\nPerkalian')
         tm = TuringMachine()
         angka1 = input('angka 1 : ')
@@ -933,10 +895,10 @@ if __name__ == '__main__':
         sumOfZero = 0
         sign = 1
         for x in tm.tape.values():
-          if x == '0':
-            sumOfZero += 1
-          elif x == '-':
-            sign *= -1
+            if x == '0':
+                sumOfZero += 1
+            elif x == '-':
+                sign *= -1
         sumOfZero *= sign
         perkalian = sumOfZero
         print(f'Hasil: {perkalian}')
@@ -951,35 +913,35 @@ if __name__ == '__main__':
 
         index -= 1
         if angka1 < 0:
-          angka1 = angka1 * -1
-          tape[index] = '-'
-          index += 1
-          for i in range(angka1):
-            tape[index] = '0'
+            angka1 = angka1 * -1
+            tape[index] = '-'
             index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
         else:
-          tape[index] = '+'
-          index += 1
-          for i in range(angka1):
-              tape[index] = '0'
-              index += 1
+            tape[index] = '+'
+            index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
 
         tape[index] = '1'
         index += 1
 
         if angka2 < 0:
-          angka2 = angka2 * -1
-          tape[index] = '-'
-          index += 1
-          for i in range(angka2):
-            tape[index] = '0'
+            angka2 = angka2 * -1
+            tape[index] = '-'
             index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
         else:
-          tape[index] = '+'
-          index += 1
-          for i in range(angka2):
-              tape[index] = '0'
-              index += 1
+            tape[index] = '+'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
         
         tape[index] = '1'
         index += 1
@@ -1006,8 +968,7 @@ if __name__ == '__main__':
                 n -= 1
         print('Hasil =', sign + str(n))
 
-
-    if menu == '5':
+    elif menu == '5':
         print('\n\nFaktorial')
         tm = TuringMachine()
         angka1 = int(input('\ninput : '))
@@ -1037,15 +998,15 @@ if __name__ == '__main__':
         sumOfZero = 0
         sign = 1
         for x in tm.tape.values():
-          if x == '0':
-            sumOfZero += 1
-          elif x == '-':
-            sign *= -1
+            if x == '0':
+                sumOfZero += 1
+            elif x == '-':
+                sign *= -1
         sumOfZero *= sign
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
 
-    if menu == '6':
+    elif menu == '6':
         print('\n\nPangkat')
         tm = TuringMachine()
         angka2 = int(input('angka : '))
@@ -1054,15 +1015,15 @@ if __name__ == '__main__':
         index = 1
 
         for i in range(angka1):
-          tape[index] = '0'
-          index += 1
+            tape[index] = '0'
+            index += 1
 
         tape[index] = '1'
         index += 1
 
         for i in range(angka2):
-          tape[index] = '0'
-          index += 1
+            tape[index] = '0'
+            index += 1
 
         tape[index] = '1'
         index += 1
@@ -1078,13 +1039,13 @@ if __name__ == '__main__':
 
         n = 0
         for i in tm.tape.values():
-          if i == '0':
-            n += 1
-          elif i == '-0':
-            n -= 1
+            if i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
         print('Hasil = ', n)
 
-    if menu == '7':
+    elif menu == '7':
         print('\n\nLogaritma Biner')
         tm = TuringMachine()
         angka1 = int(input('\n2 log : '))
@@ -1107,13 +1068,13 @@ if __name__ == '__main__':
         sumOfZero = 0
 
         for x in tm.tape.values():
-          if x == '0':
-            sumOfZero += 1
+            if x == '0':
+                sumOfZero += 1
 
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
 
-    if menu == '8':
+    elif menu == '8':
         print('\n\nAkar Kuadrat')
         tm = TuringMachine()
         angka1 = int(input('\nAkar Kuadrat : '))
@@ -1143,6 +1104,3 @@ if __name__ == '__main__':
 
         result = sumOfZero
         print(f'Hasil = {result}')
-
-
-   
