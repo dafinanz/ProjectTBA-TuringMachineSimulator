@@ -19,17 +19,8 @@ class TuringMachineSimulator:
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
         self.submit_button.pack(anchor='w')
 
-        # self.submit_operation = Button(self.window, text="Submit", command=self.handle_submit)
-        # self.submit_operation.pack(anchor='w')
-
         self.result_label = Label(self.window, text="", justify="left")
         self.result_label.pack(anchor='w')
-
-        self.result_calculation = Label(self.window, text="", justify="left")
-        self.result_calculation.pack(anchor='w')
-
-        self.result_accept = Label(self.window, text="", justify="left")
-        self.result_accept.pack(anchor='w')
 
         self.window.mainloop()
 
@@ -38,15 +29,17 @@ class TuringMachineSimulator:
 
         if menu == '1':
             self.result_label.configure(text="\nPenjumlahan")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
+            input2 = Label(self.window, text="Angka 2")
+            input2.pack(anchor='w')
             angka2_entry = Entry(self.window)
             angka2_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_penjumlahan(angka1_entry.get(), angka2_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_penjumlahan(angka1_entry.get(), angka2_entry.get()))
+            submit_operation.pack(anchor='w')
         elif menu == '2':
             self.result_label.configure(text="\nPengurangan")
             angka1_entry = Entry(self.window)
@@ -173,7 +166,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
         n = 0
         sign = ''
@@ -187,7 +181,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        self.result_calculation.configure(text=f"{angka1} + {angka2} = {sign + str(n)}")
+        result_calculation = Label(self.window, text=f"{angka1} + {angka2} = {sign + str(n)}")
+        result_calculation.pack(anchor='w')
 
     def calculate_pengurangan(self, angka1, angka2):
         tm = TuringMachine()
