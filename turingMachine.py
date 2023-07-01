@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from typing import DefaultDict, Dict, List, Set, Tuple
 # from pydantic import BaseModel
 from typing import List, Optional
-from Penjumlahan import additionMode
+from Penjumlahan import penjumlahan_m
 from Pengurangan import substraction
 from Perkalian import perkalian
 from Pembagian import division
@@ -18,7 +18,7 @@ from Pangkat import powerMode
 @dataclass
 class TuringMachine:
 
-    additionMode = additionMode
+    penjumlahan = penjumlahan_m
     substraction = substraction
     multiplicationMode = perkalian
     division = division
@@ -95,8 +95,7 @@ class TuringMachine:
 # Create an instance of TuringMachine
 tm = TuringMachine()
 
-# Call the additionMode method
-tm.additionMode()
+tm.penjumlahan()
 tm.substraction()
 tm.multiplicationMode()
 tm.division()
