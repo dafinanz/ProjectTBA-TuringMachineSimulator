@@ -8,7 +8,7 @@ from Penjumlahan import penjumlahan_m
 from Pengurangan import pengurangan_m
 from Perkalian import perkalian_m
 from Pembagian import pembagian_m
-from Faktorial import faktorialMode
+from Faktorial import faktorial_m
 from AkarKuadrat import squareroot
 from LogaritmaBiner import logaritmaMode
 from Pangkat import powerMode
@@ -22,7 +22,7 @@ class TuringMachine:
     substraction = pengurangan_m
     multiplicationMode = perkalian_m
     division = pembagian_m
-    faktorialMode = faktorialMode
+    faktorialMode = faktorial_m
     squareroot = squareroot
     logaritmaMode = logaritmaMode
     powerMode = powerMode

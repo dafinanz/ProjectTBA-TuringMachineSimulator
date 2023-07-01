@@ -3,7 +3,7 @@ from Penjumlahan import penjumlahan_m
 from Pengurangan import pengurangan_m
 from Perkalian import perkalian_m
 from Pembagian import pembagian_m
-from Faktorial import faktorialMode
+from Faktorial import faktorial_m
 from AkarKuadrat import squareroot
 from LogaritmaBiner import logaritmaMode
 from Pangkat import powerMode
