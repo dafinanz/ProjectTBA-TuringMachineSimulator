@@ -19,16 +19,12 @@ class TuringMachineSimulator:
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
         self.submit_button.pack(anchor='w')
 
-        # self.result_label = Label(self.window, text="", justify="left")
-        # self.result_label.pack(anchor='w')
-
         self.window.mainloop()
 
     def handle_submit(self):
         menu = self.menu_entry.get()
 
         if menu == '1':
-            # self.result_label.configure(text="\nPenjumlahan")
             result_label = Label(self.window, text="\nPenjumlahan")
             result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
@@ -43,7 +39,8 @@ class TuringMachineSimulator:
             submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_penjumlahan(angka1_entry.get(), angka2_entry.get()))
             submit_operation.pack(anchor='w')
         elif menu == '2':
-            self.result_label.configure(text="\nPengurangan")
+            result_label = Label(self.window, text="\nPengurangan")
+            result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
             input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
@@ -56,7 +53,8 @@ class TuringMachineSimulator:
             submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_pengurangan(angka1_entry.get(), angka2_entry.get()))
             submit_operation.pack(anchor='w')
         elif menu == '3':
-            self.result_label.configure(text="\nPerkalian")
+            result_label = Label(self.window, text="\nPerkalian")
+            result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
             input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
@@ -69,7 +67,8 @@ class TuringMachineSimulator:
             submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_perkalian(angka1_entry.get(), angka2_entry.get()))
             submit_operation.pack(anchor='w')
         elif menu == '4':
-            self.result_label.configure(text="\nPembagian")
+            result_label = Label(self.window, text="\nPembagian")
+            result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
             input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
@@ -82,7 +81,8 @@ class TuringMachineSimulator:
             submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_pembagian(angka1_entry.get(), angka2_entry.get()))
             submit_operation.pack(anchor='w')
         elif menu == '5':
-            self.result_label.configure(text="\nFaktorial")
+            result_label = Label(self.window, text="\nFaktorial")
+            result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
             input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
@@ -91,7 +91,8 @@ class TuringMachineSimulator:
             submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_faktorial(angka1_entry.get()))
             submit_operation.pack(anchor='w')
         elif menu == '6':
-            self.result_label.configure(text="\nPangkat")
+            result_label = Label(self.window, text="\nPangkat")
+            result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
             input1.pack(anchor='w')
             angka2_entry = Entry(self.window)
@@ -104,7 +105,8 @@ class TuringMachineSimulator:
             submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_pangkat(angka2_entry.get(), angka1_entry.get()))
             submit_operation.pack(anchor='w')
         elif menu == '7':
-            self.result_label.configure(text="Logaritma Biner")
+            result_label = Label(self.window, text="\nLogaritma")
+            result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
             input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
@@ -113,7 +115,8 @@ class TuringMachineSimulator:
             submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_logaritma(angka1_entry.get()))
             submit_operation.pack(anchor='w')
         elif menu == '8':
-            self.result_label.configure(text="\nAkar Kuadrat")
+            result_label = Label(self.window, text="\nAkar Kuadrat")
+            result_label.pack(anchor='w')
             input1 = Label(self.window, text="Angka 1")
             input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
