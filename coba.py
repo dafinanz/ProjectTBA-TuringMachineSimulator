@@ -42,75 +42,83 @@ class TuringMachineSimulator:
             submit_operation.pack(anchor='w')
         elif menu == '2':
             self.result_label.configure(text="\nPengurangan")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
+            input2 = Label(self.window, text="Angka 2")
+            input2.pack(anchor='w')
             angka2_entry = Entry(self.window)
             angka2_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_pengurangan(angka1_entry.get(), angka2_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_pengurangan(angka1_entry.get(), angka2_entry.get()))
+            submit_operation.pack(anchor='w')
         elif menu == '3':
             self.result_label.configure(text="\nPerkalian")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
+            input2 = Label(self.window, text="Angka 2")
+            input2.pack(anchor='w')
             angka2_entry = Entry(self.window)
             angka2_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_perkalian(angka1_entry.get(), angka2_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_perkalian(angka1_entry.get(), angka2_entry.get()))
+            submit_operation.pack(anchor='w')
         elif menu == '4':
             self.result_label.configure(text="\nPembagian")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
+            input2 = Label(self.window, text="Angka 2")
+            input2.pack(anchor='w')
             angka2_entry = Entry(self.window)
             angka2_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_pembagian(angka1_entry.get(), angka2_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_pembagian(angka1_entry.get(), angka2_entry.get()))
+            submit_operation.pack(anchor='w')
         elif menu == '5':
             self.result_label.configure(text="\nFaktorial")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_faktorial(angka1_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_faktorial(angka1_entry.get()))
+            submit_operation.pack(anchor='w')
         elif menu == '6':
             self.result_label.configure(text="\nPangkat")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka2_entry = Entry(self.window)
             angka2_entry.pack(anchor='w')
+            input2 = Label(self.window, text="Angka 2")
+            input2.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_pangkat(angka2_entry.get(), angka1_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_pangkat(angka2_entry.get(), angka1_entry.get()))
+            submit_operation.pack(anchor='w')
         elif menu == '7':
             self.result_label.configure(text="Logaritma Biner")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_logaritma(angka1_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_logaritma(angka1_entry.get()))
+            submit_operation.pack(anchor='w')
         elif menu == '8':
             self.result_label.configure(text="\nAkar Kuadrat")
+            input1 = Label(self.window, text="Angka 1")
+            input1.pack(anchor='w')
             angka1_entry = Entry(self.window)
             angka1_entry.pack(anchor='w')
-            self.result_accept.configure()
-            self.result_calculation.configure()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_akarkuadrat(angka1_entry.get()))
-            submit_button.pack(anchor='w')
+            submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_akarkuadrat(angka1_entry.get()))
+            submit_operation.pack(anchor='w')
         else:
             self.result_label.configure(text="Nomor pilihan tidak valid")
         
@@ -234,7 +242,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
         n = 0
         sign = ''
@@ -248,7 +257,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        self.result_calculation.configure(text=f"{angka1} - {angka2} = {sign + str(n)}")
+        result_calculation = Label(self.window, text=f"{angka1} - {angka2} = {sign + str(n)}")
+        result_calculation.pack(anchor='w')
 
     def calculate_perkalian(self, angka1, angka2):
         index = 0
@@ -305,10 +315,12 @@ class TuringMachineSimulator:
         perkalian = sumOfZero
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
-        # self.result_label.configure(text=f"Hasil: {perkalian}")
-        self.result_calculation.configure(text=f"{angka1} x {angka2} = {perkalian}")
+        print('Hasil =', perkalian)
+        result_calculation = Label(self.window, text=f"{angka1} x {angka2} = {perkalian}")
+        result_calculation.pack(anchor='w')
 
     def calculate_pembagian(self, angka1, angka2):
         tm = TuringMachine()
@@ -360,7 +372,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
         n = 0
         sign = ''
@@ -374,7 +387,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        self.result_calculation.configure(text=f"{angka1} / {angka2} = {sign + str(n)}")
+        result_calculation = Label(self.window, text=f"{angka1} / {angka2} = {sign + str(n)}")
+        result_calculation.pack(anchor='w')
 
     def calculate_faktorial(self, angka1):
         tm = TuringMachine()
@@ -401,7 +415,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
         sumOfZero = 0
         sign = 1
@@ -413,7 +428,8 @@ class TuringMachineSimulator:
         sumOfZero *= sign
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
-        self.result_calculation.configure(text=f"{angka1}! = {faktorial}")
+        result_calculation = Label(self.window, text=f"{angka1}! = {faktorial}")
+        result_calculation.pack(anchor='w')
 
     def calculate_pangkat(self, angka2, angka1):
         tm = TuringMachine()
@@ -444,7 +460,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
         n = 0
         for i in tm.tape.values():
@@ -453,7 +470,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil = ', n)
-        self.result_calculation.configure(text=f"{angka2} ^ {angka1} = {n}")
+        result_calculation = Label(self.window, text=f"{angka2} ^ {angka1} = {n}")
+        result_calculation.pack(anchor='w')
 
     def calculate_logaritma(self, angka1):
         tm = TuringMachine()
@@ -473,7 +491,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
         sumOfZero = 0
 
@@ -483,7 +502,8 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
-        self.result_calculation.configure(text=f"2 Log {angka1} = {result}")
+        result_calculation = Label(self.window, text=f"2 Log {angka1} = {result}")
+        result_calculation.pack(anchor='w')
 
     def calculate_akarkuadrat(self, angka1):
         tm = TuringMachine()
@@ -505,7 +525,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
+        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        result_accept.pack(anchor='w')
 
         sumOfZero = 0
 
@@ -515,7 +536,8 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'Hasil = {result}')
-        self.result_calculation.configure(text=f"sqrt({angka1}) = {result}")
+        result_calculation = Label(self.window, text=f"sqrt({angka1}) = {result}")
+        result_calculation.pack(anchor='w')
 
     def run(self):
         self.window.mainloop()
