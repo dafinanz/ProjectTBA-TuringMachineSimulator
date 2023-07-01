@@ -8,6 +8,7 @@ def powerMode(self):
     self.initial_state = 'q0'
     self.accepting_states = {'q35'}
     self.transitions = {
+                        ('q0', 'B'): ('q0', 'B', 1),
                         ('q0', '0'): ('q1', 'B', 1),
                         ('q0', '1'): ('q7', 'B', 1),
 
