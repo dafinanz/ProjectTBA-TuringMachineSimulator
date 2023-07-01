@@ -33,6 +33,15 @@ class TuringMachineSimulator:
 
             submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_penjumlahan(angka1_entry.get(), angka2_entry.get()))
             submit_button.pack()
+        elif menu == '2':
+            self.result_label.configure(text="Pengurangan")
+            angka1_entry = Entry(self.window)
+            angka1_entry.pack()
+            angka2_entry = Entry(self.window)
+            angka2_entry.pack()
+
+            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_pengurangan(angka1_entry.get(), angka2_entry.get()))
+            submit_button.pack()
         elif menu == '3':
             self.result_label.configure(text="Perkalian")
             angka1_entry = Entry(self.window)
@@ -109,6 +118,70 @@ class TuringMachineSimulator:
         # print('Hasil =', sign + str(n))
         self.result_label.configure(text=f"Hasil: {sign + str(n)}")
 
+    def calculate_pengurangan(self, angka1, angka2):
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        angka2 = int(angka2)
+        tape = {0: 'B'}
+        index = 1
+
+        index -= 1
+        if angka1 < 0:
+            angka1 = angka1 * -1
+            tape[index] = '-'
+            index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
+        else:
+            tape[index] = '+'
+            index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        if angka2 < 0:
+            angka2 = angka2 * -1
+            tape[index] = '-'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
+        else:
+            tape[index] = '+'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        tm.pengurangan()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+
+        n = 0
+        sign = ''
+        for i in tm.tape.values():
+            if i == '-':
+                sign = '-'
+            elif i == '+':
+                sign = '+'   
+            elif i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
+        # print('Hasil =', sign + str(n))
+        self.result_label.configure(text=f"Hasil: {sign + str(n)}")
 
     def calculate_perkalian(self, angka1, angka2):
         index = 0
