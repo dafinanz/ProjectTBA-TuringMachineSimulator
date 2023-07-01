@@ -77,6 +77,8 @@ if __name__ == '__main__':
                 tape[index] = '0'
                 index += 1
         else:
+            tape[index] = '+'
+            index += 1
             for i in range(angka1):
                 tape[index] = '0'
                 index += 1
@@ -92,6 +94,8 @@ if __name__ == '__main__':
                 tape[index] = '0'
                 index += 1
         else:
+            tape[index] = '+'
+            index += 1
             for i in range(angka2):
                 tape[index] = '0'
                 index += 1
