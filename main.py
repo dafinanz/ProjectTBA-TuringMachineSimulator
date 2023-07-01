@@ -17,15 +17,20 @@ if __name__ == '__main__':
         tm = TuringMachine()
         angka1 = int(input('\nangka 1 : '))
         angka2 = int(input('angka 2 : '))
-        tape = {0: 'b'}
+        tape = {0: 'B'}
         index = 1
 
+        index -= 1
         if angka1 < 0:
             angka1 = angka1 * -1
+            tape[index] = '-'
+            index += 1
             for i in range(angka1):
-                tape[index] = '-0'
+                tape[index] = '0'
                 index += 1
         else:
+            tape[index] = '+'
+            index += 1
             for i in range(angka1):
                 tape[index] = '0'
                 index += 1
@@ -35,13 +40,43 @@ if __name__ == '__main__':
 
         if angka2 < 0:
             angka2 = angka2 * -1
-            for i in range(angka2):
-                tape[index] = '-0'
-                index += 1
-        else:
+            tape[index] = '-'
+            index += 1
             for i in range(angka2):
                 tape[index] = '0'
                 index += 1
+        else:
+            tape[index] = '+'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
+        
+        tape[index] = '1'
+        index += 1
+
+        # if angka1 < 0:
+        #     angka1 = angka1 * -1
+        #     for i in range(angka1):
+        #         tape[index] = '-'
+        #         index += 1
+        # else:
+        #     for i in range(angka1):
+        #         tape[index] = '+'
+        #         index += 1
+
+        # tape[index] = '1'
+        # index += 1
+
+        # if angka2 < 0:
+        #     angka2 = angka2 * -1
+        #     for i in range(angka2):
+        #         tape[index] = '-'
+        #         index += 1
+        # else:
+        #     for i in range(angka2):
+        #         tape[index] = '+'
+        #         index += 1
 
         tm.additionMode()
         tm.initialize(tape)
@@ -77,6 +112,8 @@ if __name__ == '__main__':
                 tape[index] = '0'
                 index += 1
         else:
+            tape[index] = '+'
+            index += 1
             for i in range(angka1):
                 tape[index] = '0'
                 index += 1
@@ -92,6 +129,8 @@ if __name__ == '__main__':
                 tape[index] = '0'
                 index += 1
         else:
+            tape[index] = '+'
+            index += 1
             for i in range(angka2):
                 tape[index] = '0'
                 index += 1
