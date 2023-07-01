@@ -129,6 +129,19 @@ if __name__ == '__main__':
 
         print('Accepted : ', tm.accepted_input())
 
+        n = 0
+        sign = ''
+        for i in tm.tape.values():
+            if i == '-':
+                sign = '-'
+            elif i == '+':
+                sign = '+'   
+            elif i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
+        print('Hasil =', sign + str(n))
+
     elif menu == '3':
         print('\n\nPerkalian')
         tm = TuringMachine()
