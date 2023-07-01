@@ -6,7 +6,7 @@ from typing import DefaultDict, Dict, List, Set, Tuple
 from typing import List, Optional
 from Penjumlahan import penjumlahan_m
 from Pengurangan import pengurangan_m
-from Perkalian import perkalian
+from Perkalian import perkalian_m
 from Pembagian import division
 from Faktorial import faktorialMode
 from AkarKuadrat import squareroot
@@ -20,7 +20,7 @@ class TuringMachine:
 
     penjumlahan = penjumlahan_m
     substraction = pengurangan_m
-    multiplicationMode = perkalian
+    multiplicationMode = perkalian_m
     division = division
     faktorialMode = faktorialMode
     squareroot = squareroot
