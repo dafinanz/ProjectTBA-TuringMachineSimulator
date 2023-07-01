@@ -96,6 +96,9 @@ if __name__ == '__main__':
                 tape[index] = '0'
                 index += 1
 
+        tape[index] = '1'
+        index += 1
+
         tm.substraction()
         tm.initialize(tape)
 
