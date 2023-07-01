@@ -20,7 +20,7 @@ class TuringMachine:
 
     additionMode = additionMode
     substraction = substraction
-    multiplicationMode = multiplicationMode
+    multiplicationMode = perkalian
     division = division
     faktorialMode = faktorialMode
     squareroot = squareroot
