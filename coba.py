@@ -83,6 +83,13 @@ class TuringMachineSimulator:
 
             submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_logaritma(angka1_entry.get()))
             submit_button.pack()
+        elif menu == '8':
+            self.result_label.configure(text="Akar Kuadrat")
+            angka1_entry = Entry(self.window)
+            angka1_entry.pack()
+
+            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_akarkuadrat(angka1_entry.get()))
+            submit_button.pack()
         
 
     def calculate_penjumlahan(self, angka1, angka2):
@@ -444,6 +451,37 @@ class TuringMachineSimulator:
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
         self.result_label.configure(text=f"2 Log {angka1} = {result}")
+
+    def calculate_akarkuadrat(self, angka1):
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        tape = {0: 'b'}
+        index = 0
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+            tape[index] = '1'
+            index == 1
+
+        tm.akarkuadrat()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+
+        sumOfZero = 0
+
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+
+        result = sumOfZero
+        print(f'Hasil = {result}')
+        self.result_label.configure(text=f"Hasil = {result}")
 
     def run(self):
         self.window.mainloop()
