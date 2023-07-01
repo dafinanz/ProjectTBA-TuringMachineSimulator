@@ -1,12 +1,3 @@
-from collections import defaultdict
-
-def initialize(self, input_symbols: 'dict[int, str]'):
-    self.head = 0
-    self.halted = False
-    self.current_state = self.initial_state
-    self.tape = defaultdict(lambda: self.blank_symbol, input_symbols)
-    self.tape_string = []
-
 def division(self):
         self.states = {'q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
                         'q11', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17'}
