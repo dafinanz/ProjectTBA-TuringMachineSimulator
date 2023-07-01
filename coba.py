@@ -67,6 +67,23 @@ class TuringMachineSimulator:
 
             submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_faktorial(angka1_entry.get()))
             submit_button.pack()
+        elif menu == '6':
+            self.result_label.configure(text="Pangkat")
+            angka2_entry = Entry(self.window)
+            angka2_entry.pack()
+            angka1_entry = Entry(self.window)
+            angka1_entry.pack()
+
+            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_pangkat(angka2_entry.get(), angka1_entry.get()))
+            submit_button.pack()
+        elif menu == '7':
+            self.result_label.configure(text="Logaritma Biner")
+            angka1_entry = Entry(self.window)
+            angka1_entry.pack()
+
+            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_logaritma(angka1_entry.get()))
+            submit_button.pack()
+        
 
     def calculate_penjumlahan(self, angka1, angka2):
         angka1 = int(angka1)
@@ -359,6 +376,74 @@ class TuringMachineSimulator:
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
         self.result_label.configure(text=f"Hasil: {faktorial}")
+
+    def calculate_pangkat(self, angka2, angka1):
+        tm = TuringMachine()
+        angka2 = int(angka2)
+        angka1 = int(angka1)
+        tape = {0: 'B'}
+        index = 1
+
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        for i in range(angka2):
+            tape[index] = '0'
+            index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        tm.pangkat()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+
+        n = 0
+        for i in tm.tape.values():
+            if i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
+        print('Hasil = ', n)
+        self.result_label.configure(text=f"Hasil: {n}")
+
+    def calculate_logaritma(self, angka1):
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        tape = {0: 'b'}
+        index = 0
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+
+        tm.logaritma()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+
+        sumOfZero = 0
+
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+
+        result = sumOfZero
+        print(f'2 Log {angka1} = {result}')
+        self.result_label.configure(text=f"2 Log {angka1} = {result}")
 
     def run(self):
         self.window.mainloop()
