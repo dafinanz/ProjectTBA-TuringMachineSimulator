@@ -19,6 +19,12 @@ class TuringMachineSimulator:
         self.result_label = Label(self.window, text="")
         self.result_label.pack()
 
+        self.result_calculation = Label(self.window, text="")
+        self.result_calculation.pack()
+
+        self.result_accept = Label(self.window, text="")
+        self.result_accept.pack()
+
         self.window.mainloop()
 
     def handle_submit(self):
@@ -30,6 +36,8 @@ class TuringMachineSimulator:
             angka1_entry.pack()
             angka2_entry = Entry(self.window)
             angka2_entry.pack()
+            self.result_accept.configure()
+            self.result_calculation.configure()
 
             submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_penjumlahan(angka1_entry.get(), angka2_entry.get()))
             submit_button.pack()
@@ -145,6 +153,7 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
+        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
 
         n = 0
         sign = ''
@@ -158,7 +167,7 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        self.result_label.configure(text=f"Hasil: {sign + str(n)}")
+        self.result_calculation.configure(text=f"{angka1} + {angka1} = {sign + str(n)}")
 
     def calculate_pengurangan(self, angka1, angka2):
         tm = TuringMachine()
