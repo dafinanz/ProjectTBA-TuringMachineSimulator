@@ -60,6 +60,13 @@ class TuringMachineSimulator:
 
             submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_pembagian(angka1_entry.get(), angka2_entry.get()))
             submit_button.pack()
+        elif menu == '5':
+            self.result_label.configure(text="Faktorial")
+            angka1_entry = Entry(self.window)
+            angka1_entry.pack()
+
+            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_faktorial(angka1_entry.get()))
+            submit_button.pack()
 
     def calculate_penjumlahan(self, angka1, angka2):
         angka1 = int(angka1)
@@ -314,6 +321,44 @@ class TuringMachineSimulator:
                 n -= 1
         print('Hasil =', sign + str(n))
         self.result_label.configure(text=f"Hasil: {sign + str(n)}")
+
+    def calculate_faktorial(self, angka1):
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        tape = {0: 'B'}
+        index = 0
+
+        tape[index] = '1'
+        index += 1
+
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+        
+        tape[index] = '1'
+        index += 1
+
+
+        tm.faktorial()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+
+        sumOfZero = 0
+        sign = 1
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+            elif x == '-':
+                sign *= -1
+        sumOfZero *= sign
+        faktorial = sumOfZero
+        print(f'Hasil: {faktorial}')
+        self.result_label.configure(text=f"Hasil: {faktorial}")
 
     def run(self):
         self.window.mainloop()
