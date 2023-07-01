@@ -4,10 +4,10 @@ from dataclasses import dataclass, field
 from typing import DefaultDict, Dict, List, Set, Tuple
 # from pydantic import BaseModel
 from typing import List, Optional
-from Penjumlahan import additionMode
-from Pengurangan import substraction
-from Perkalian import perkalian
-from Pembagian import division
+from Penjumlahan import penjumlahan_m
+from Pengurangan import pengurangan_m
+from Perkalian import perkalian_m
+from Pembagian import pembagian_m
 from Faktorial import faktorialMode
 from AkarKuadrat import squareroot
 from LogaritmaBiner import logaritmaMode
@@ -18,10 +18,10 @@ from Pangkat import powerMode
 @dataclass
 class TuringMachine:
 
-    additionMode = additionMode
-    substraction = substraction
-    multiplicationMode = perkalian
-    division = division
+    penjumlahan = penjumlahan_m
+    substraction = pengurangan_m
+    multiplicationMode = perkalian_m
+    division = pembagian_m
     faktorialMode = faktorialMode
     squareroot = squareroot
     logaritmaMode = logaritmaMode
@@ -95,8 +95,7 @@ class TuringMachine:
 # Create an instance of TuringMachine
 tm = TuringMachine()
 
-# Call the additionMode method
-tm.additionMode()
+tm.penjumlahan()
 tm.substraction()
 tm.multiplicationMode()
 tm.division()
