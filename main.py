@@ -1,6 +1,6 @@
 from turingMachine import TuringMachine
 from Penjumlahan import penjumlahan_m
-from Pengurangan import substraction
+from Pengurangan import pengurangan_m
 from Perkalian import perkalian
 from Pembagian import division
 from Faktorial import faktorialMode

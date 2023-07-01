@@ -5,7 +5,7 @@ from typing import DefaultDict, Dict, List, Set, Tuple
 # from pydantic import BaseModel
 from typing import List, Optional
 from Penjumlahan import penjumlahan_m
-from Pengurangan import substraction
+from Pengurangan import pengurangan_m
 from Perkalian import perkalian
 from Pembagian import division
 from Faktorial import faktorialMode
@@ -19,7 +19,7 @@ from Pangkat import powerMode
 class TuringMachine:
 
     penjumlahan = penjumlahan_m
-    substraction = substraction
+    substraction = pengurangan_m
     multiplicationMode = perkalian
     division = division
     faktorialMode = faktorialMode
