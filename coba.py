@@ -71,7 +71,7 @@ class TuringMachineSimulator:
 
         tm = TuringMachine()
 
-        tm.multiplicationMode()
+        tm.perkalian()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -87,6 +87,8 @@ class TuringMachineSimulator:
                 sign *= -1
         sumOfZero *= sign
         perkalian = sumOfZero
+
+        print('Accepted : ', tm.accepted_input())
 
         self.result_label.configure(text=f"Hasil: {perkalian}")
 
