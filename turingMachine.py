@@ -6,7 +6,7 @@ from typing import DefaultDict, Dict, List, Set, Tuple
 from typing import List, Optional
 from Penjumlahan import additionMode
 from Pengurangan import substraction
-from Perkalian import multiplicationMode
+from Perkalian import perkalian
 from Pembagian import division
 from Faktorial import faktorialMode
 from AkarKuadrat import squareroot
