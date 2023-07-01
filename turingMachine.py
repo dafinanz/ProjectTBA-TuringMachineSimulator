@@ -2,19 +2,16 @@ import time
 from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import DefaultDict, Dict, List, Set, Tuple
-# from pydantic import BaseModel
 from typing import List, Optional
 from Penjumlahan import penjumlahan_m
 from Pengurangan import pengurangan_m
 from Perkalian import perkalian_m
 from Pembagian import pembagian_m
 from Faktorial import faktorial_m
+from Pangkat import pangkat_m
 from AkarKuadrat import akarkuadrat_m
 from LogaritmaBiner import logaritma_m
-from Pangkat import pangkat_m
-# end
 
-# 1
 @dataclass
 class TuringMachine:
 
@@ -23,9 +20,9 @@ class TuringMachine:
     multiplicationMode = perkalian_m
     division = pembagian_m
     faktorialMode = faktorial_m
+    powerMode = pangkat_m
     squareroot = akarkuadrat_m
     logaritmaMode = logaritma_m
-    powerMode = pangkat_m
 
     states: Set[str] = field(init=False)
     symbols: Set[str] = field(init=False)
