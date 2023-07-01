@@ -120,7 +120,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.substraction()
+        tm.pengurangan()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -181,7 +181,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.multiplicationMode()
+        tm.perkalian()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -244,7 +244,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.division()
+        tm.pembagian()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -284,7 +284,7 @@ if __name__ == '__main__':
         index += 1
 
 
-        tm.faktorialMode()
+        tm.faktorial()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -326,7 +326,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.powerMode()
+        tm.pangkat()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -354,7 +354,7 @@ if __name__ == '__main__':
             index += 1
 
 
-        tm.logaritmaMode()
+        tm.logaritma()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -385,7 +385,7 @@ if __name__ == '__main__':
             tape[index] = '1'
             index == 1
 
-        tm.squareroot()
+        tm.akarkuadrat()
         tm.initialize(tape)
 
         while not tm.halted:
