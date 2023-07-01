@@ -4,16 +4,16 @@ from Pengurangan import pengurangan_m
 from Perkalian import perkalian_m
 from Pembagian import pembagian_m
 from Faktorial import faktorial_m
-from AkarKuadrat import akarkuadrat_m
-from LogaritmaBiner import logaritmaMode
 from Pangkat import pangkat_m
+from AkarKuadrat import akarkuadrat_m
+from LogaritmaBiner import logaritma_m
 
 if __name__ == '__main__':
     print('Turing Machine Simulator\n\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n')
-    menu = input('pilihan : ')
+    pilihan = input('pilihan : ')
 
-    if menu == '1':
-        print('\n\nPertambahan')
+    if pilihan == '1':
+        print('\n\nPenjumlahan')
         tm = TuringMachine()
         angka1 = int(input('\nangka 1 : '))
         angka2 = int(input('angka 2 : '))
@@ -77,7 +77,7 @@ if __name__ == '__main__':
                 n -= 1
         print('Hasil =', sign + str(n))
 
-    elif menu == '2':
+    elif pilihan == '2':
         print('\n\nPengurangan')
         tm = TuringMachine()
         angka1 = int(input('\nangka 1 : '))
@@ -120,7 +120,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.substraction()
+        tm.pengurangan()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -142,7 +142,7 @@ if __name__ == '__main__':
                 n -= 1
         print('Hasil =', sign + str(n))
 
-    elif menu == '3':
+    elif pilihan == '3':
         print('\n\nPerkalian')
         tm = TuringMachine()
         angka1 = input('angka 1 : ')
@@ -181,7 +181,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.multiplicationMode()
+        tm.perkalian()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -201,7 +201,7 @@ if __name__ == '__main__':
         perkalian = sumOfZero
         print(f'Hasil: {perkalian}')
 
-    elif menu == '4':
+    elif pilihan == '4':
         print('\n\nPembagian')
         tm = TuringMachine()
         angka1 = int(input('\nangka 1 : '))
@@ -244,7 +244,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.division()
+        tm.pembagian()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -266,7 +266,7 @@ if __name__ == '__main__':
                 n -= 1
         print('Hasil =', sign + str(n))
 
-    elif menu == '5':
+    elif pilihan == '5':
         print('\n\nFaktorial')
         tm = TuringMachine()
         angka1 = int(input('\ninput : '))
@@ -284,7 +284,7 @@ if __name__ == '__main__':
         index += 1
 
 
-        tm.faktorialMode()
+        tm.faktorial()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -304,7 +304,7 @@ if __name__ == '__main__':
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
 
-    elif menu == '6':
+    elif pilihan == '6':
         print('\n\nPangkat')
         tm = TuringMachine()
         angka2 = int(input('angka : '))
@@ -326,7 +326,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.powerMode()
+        tm.pangkat()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -343,7 +343,7 @@ if __name__ == '__main__':
                 n -= 1
         print('Hasil = ', n)
 
-    elif menu == '7':
+    elif pilihan == '7':
         print('\n\nLogaritma Biner')
         tm = TuringMachine()
         angka1 = int(input('\n2 log : '))
@@ -354,7 +354,7 @@ if __name__ == '__main__':
             index += 1
 
 
-        tm.logaritmaMode()
+        tm.logaritma()
         tm.initialize(tape)
 
         while not tm.halted:
@@ -372,7 +372,7 @@ if __name__ == '__main__':
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
 
-    elif menu == '8':
+    elif pilihan == '8':
         print('\n\nAkar Kuadrat')
         tm = TuringMachine()
         angka1 = int(input('\nAkar Kuadrat : '))
@@ -385,7 +385,7 @@ if __name__ == '__main__':
             tape[index] = '1'
             index == 1
 
-        tm.squareroot()
+        tm.akarkuadrat()
         tm.initialize(tape)
 
         while not tm.halted:

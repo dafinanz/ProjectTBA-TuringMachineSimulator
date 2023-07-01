@@ -2,30 +2,27 @@ import time
 from collections import defaultdict
 from dataclasses import dataclass, field
 from typing import DefaultDict, Dict, List, Set, Tuple
-# from pydantic import BaseModel
 from typing import List, Optional
 from Penjumlahan import penjumlahan_m
 from Pengurangan import pengurangan_m
 from Perkalian import perkalian_m
 from Pembagian import pembagian_m
 from Faktorial import faktorial_m
-from AkarKuadrat import akarkuadrat_m
-from LogaritmaBiner import logaritmaMode
 from Pangkat import pangkat_m
-# end
+from AkarKuadrat import akarkuadrat_m
+from LogaritmaBiner import logaritma_m
 
-# 1
 @dataclass
 class TuringMachine:
 
     penjumlahan = penjumlahan_m
-    substraction = pengurangan_m
-    multiplicationMode = perkalian_m
-    division = pembagian_m
-    faktorialMode = faktorial_m
-    squareroot = akarkuadrat_m
-    logaritmaMode = logaritmaMode
-    powerMode = pangkat_m
+    pengurangan = pengurangan_m
+    perkalian = perkalian_m
+    pembagian = pembagian_m
+    faktorial = faktorial_m
+    pangkat = pangkat_m
+    akarkuadrat = akarkuadrat_m
+    logaritma = logaritma_m
 
     states: Set[str] = field(init=False)
     symbols: Set[str] = field(init=False)
@@ -35,7 +32,6 @@ class TuringMachine:
     accepting_states: Set[str] = field(init=False)
     transitions: Dict[Tuple[str, str],
                       Tuple[str, str, int]] = field(init=False)
-    # state, symbol -> new state, new symbol, direction
 
     head: int = field(init=False)
     tape: DefaultDict[int, str] = field(init=False)
@@ -44,9 +40,6 @@ class TuringMachine:
 
     tape_string: List[Tuple[str, str]] = field(init=False)
 
-    # end
-
-    # 2)
     def initialize(self, input_symbols: 'dict[int, str]'):
         self.head = 0
         self.halted = False
@@ -54,7 +47,6 @@ class TuringMachine:
         self.tape = defaultdict(lambda: self.blank_symbol, input_symbols)
         self.tape_string = []
 
-    # 3) sama n0.3 yg diatas
     def step(self):
         if self.halted:
             raise RuntimeError('Cannot step halted machine')
@@ -70,9 +62,6 @@ class TuringMachine:
         self.current_state = state
         self.head += direction
 
-    # end
-
-    # 4)
     def accepted_input(self):
         if not self.halted:
             raise RuntimeError('Machine still running')
@@ -90,16 +79,15 @@ class TuringMachine:
         print(f' ... state={self.current_state}')
         print(f'{" " * (2 * window + 4)}^')
 
-    # end
 
-# Create an instance of TuringMachine
+# Membuat instance turingMachine
 tm = TuringMachine()
 
 tm.penjumlahan()
-tm.substraction()
-tm.multiplicationMode()
-tm.division()
-tm.faktorialMode()
-tm.squareroot()
-tm.logaritmaMode()
-tm.powerMode()
+tm.pengurangan()
+tm.perkalian()
+tm.pembagian()
+tm.faktorial()
+tm.pangkat()
+tm.akarkuadrat()
+tm.logaritma()
