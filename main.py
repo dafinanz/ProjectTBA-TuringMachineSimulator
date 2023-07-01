@@ -1,4 +1,4 @@
-from tes import TuringMachine
+from turingMachine import TuringMachine
 from Penjumlahan import additionMode
 from Pengurangan import substraction
 from Perkalian import multiplicationMode
