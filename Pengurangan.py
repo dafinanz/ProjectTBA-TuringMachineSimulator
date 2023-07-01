@@ -144,5 +144,4 @@ def substraction(self):
 
                             ('q40', 'B'): ('q41', 'B', 1),
                             
-
                             }
