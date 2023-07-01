@@ -127,6 +127,7 @@ if __name__ == '__main__':
 
         tape[index] = '1'
         index += 1
+
         if angka2[0] == '-':
             tape[index] = '-'
             index += 1
@@ -139,6 +140,9 @@ if __name__ == '__main__':
         for i in range(angka2):
             tape[index] = '0'
             index += 1
+
+        tape[index] = '1'
+        index += 1
 
         tm.multiplicationMode()
         tm.initialize(tape)
