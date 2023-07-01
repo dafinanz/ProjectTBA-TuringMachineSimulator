@@ -19,6 +19,9 @@ class TuringMachineSimulator:
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
         self.submit_button.pack(anchor='w')
 
+        # self.submit_operation = Button(self.window, text="Submit", command=self.handle_submit)
+        # self.submit_operation.pack(anchor='w')
+
         self.result_label = Label(self.window, text="", justify="left")
         self.result_label.pack(anchor='w')
 
