@@ -10,7 +10,7 @@ from Perkalian import perkalian_m
 from Pembagian import pembagian_m
 from Faktorial import faktorial_m
 from AkarKuadrat import akarkuadrat_m
-from LogaritmaBiner import logaritmaMode
+from LogaritmaBiner import logaritma_m
 from Pangkat import pangkat_m
 # end
 
@@ -24,7 +24,7 @@ class TuringMachine:
     division = pembagian_m
     faktorialMode = faktorial_m
     squareroot = akarkuadrat_m
-    logaritmaMode = logaritmaMode
+    logaritmaMode = logaritma_m
     powerMode = pangkat_m
 
     states: Set[str] = field(init=False)

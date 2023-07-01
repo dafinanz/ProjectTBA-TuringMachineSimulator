@@ -5,7 +5,7 @@ from Perkalian import perkalian_m
 from Pembagian import pembagian_m
 from Faktorial import faktorial_m
 from AkarKuadrat import akarkuadrat_m
-from LogaritmaBiner import logaritmaMode
+from LogaritmaBiner import logaritma_m
 from Pangkat import pangkat_m
 
 if __name__ == '__main__':
