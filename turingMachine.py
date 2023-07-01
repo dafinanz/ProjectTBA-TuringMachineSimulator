@@ -11,7 +11,7 @@ from Pembagian import pembagian_m
 from Faktorial import faktorial_m
 from AkarKuadrat import squareroot
 from LogaritmaBiner import logaritmaMode
-from Pangkat import powerMode
+from Pangkat import pangkat_m
 # end
 
 # 1
@@ -25,7 +25,7 @@ class TuringMachine:
     faktorialMode = faktorial_m
     squareroot = squareroot
     logaritmaMode = logaritmaMode
-    powerMode = powerMode
+    powerMode = pangkat_m
 
     states: Set[str] = field(init=False)
     symbols: Set[str] = field(init=False)

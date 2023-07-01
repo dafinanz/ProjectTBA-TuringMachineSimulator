@@ -6,7 +6,7 @@ from Pembagian import pembagian_m
 from Faktorial import faktorial_m
 from AkarKuadrat import squareroot
 from LogaritmaBiner import logaritmaMode
-from Pangkat import powerMode
+from Pangkat import pangkat_m
 
 if __name__ == '__main__':
     print('Turing Machine Simulator\n\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n')
