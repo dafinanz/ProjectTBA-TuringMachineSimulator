@@ -55,29 +55,6 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        # if angka1 < 0:
-        #     angka1 = angka1 * -1
-        #     for i in range(angka1):
-        #         tape[index] = '-'
-        #         index += 1
-        # else:
-        #     for i in range(angka1):
-        #         tape[index] = '+'
-        #         index += 1
-
-        # tape[index] = '1'
-        # index += 1
-
-        # if angka2 < 0:
-        #     angka2 = angka2 * -1
-        #     for i in range(angka2):
-        #         tape[index] = '-'
-        #         index += 1
-        # else:
-        #     for i in range(angka2):
-        #         tape[index] = '+'
-        #         index += 1
-
         tm.additionMode()
         tm.initialize(tape)
 
@@ -88,12 +65,17 @@ if __name__ == '__main__':
         print('Accepted : ', tm.accepted_input())
 
         n = 0
+        sign = ''
         for i in tm.tape.values():
-            if i == '0':
+            if i == '-':
+                sign = '-'
+            elif i == '+':
+                sign = '+'   
+            elif i == '0':
                 n += 1
             elif i == '-0':
                 n -= 1
-        print('Hasil = ', n)
+        print('Hasil =', sign + str(n))
 
     elif menu == '2':
         print('\n\nPengurangan')
