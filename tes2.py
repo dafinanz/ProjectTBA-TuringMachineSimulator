@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Entry, Button, Canvas
+from tkinter import Tk, Label, Entry, Button, Canvas, Scrollbar, ttk
 from turingMachine import TuringMachine
 
 
@@ -20,8 +20,19 @@ class TuringMachineSimulator:
         self.result_label = Label(self.window, text="")
         self.result_label.pack()
 
-        self.canvas = Canvas(self.window)
-        self.canvas.pack(expand=True, fill='both')
+        self.canvas_frame = Canvas(self.window, width=800, height=400)
+        self.canvas_frame.pack(side='left', fill='both', expand=True)
+
+        self.canvas = Canvas(self.canvas_frame)
+        self.canvas.pack(side='left', fill='both', expand=True)
+
+        self.scrollbar = Scrollbar(self.canvas_frame, orient='vertical', command=self.canvas.yview)
+        self.scrollbar.pack(side='right', fill='y')
+
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+
+        self.frame_output = ttk.LabelFrame(self.window, text="Output", width=600)
+        self.frame_output.pack()
 
         self.window.mainloop()
 
@@ -78,7 +89,7 @@ class TuringMachineSimulator:
         tm.multiplicationMode()
         tm.initialize(tape)
 
-        x1, x2 = 0, 20
+        x1, x2 = 0,40
         y1, y2 = 0, 40
         counter = 0
 
@@ -86,7 +97,7 @@ class TuringMachineSimulator:
             tm.print()
             tm.step()
 
-            self.drawInline(index, x1, x2, y1 + counter * 40, y2 + counter * 40, counter, tm.tape, tm.head)
+            self.drawInline(index, x1, x2, y1 + counter * 40, y2 + counter * 40, counter, tm.tape, tm.head, tm.state, tm.transitions)
             counter += 1
 
         sumOfZero = 0
@@ -100,9 +111,10 @@ class TuringMachineSimulator:
         perkalian = sumOfZero
 
         self.result_label.configure(text=f"Hasil: {perkalian}")
+    
+    def drawInline(self, inputLength, x1, x2, y1, y2, counter, tape, head, state, transitions):
+        box_width = 40
 
-    def drawInline(self, inputLength, x1, x2, y1, y2, counter, tape, head):
-        box_width = 60
         for j in range(inputLength):
             x1 += box_width
             x2 += box_width
@@ -111,9 +123,31 @@ class TuringMachineSimulator:
             if head == j:
                 self.canvas.itemconfig(box, fill="yellow")
 
-        self.canvas.config(scrollregion=(0, 0, x1 + box_width, y1 + box_width))
-        self.canvas.pack(expand=YES, fill=BOTH)
+        state_label = self.canvas.create_text(x1 + box_width, y2 + 20, text=f"State: {state}")
 
+    # Draw transitions between states
+        for transition in transitions:
+            start_x = transition[0] * box_width + (box_width / 2)
+            start_y = y2 + 40
+            end_x = transition[1] * box_width + (box_width / 2)
+            end_y = y2 + 60
+            self.canvas.create_line(start_x, start_y, end_x, end_y, arrow="last")
+
+        self.canvas.config(scrollregion=self.canvas.bbox('all'))
+
+
+    # def drawInline(self, inputLength, x1, x2, y1, y2, counter, tape, head):
+    #     box_width = 40
+
+    #     for j in range(inputLength):
+    #         x1 += box_width
+    #         x2 += box_width
+    #         box = self.canvas.create_rectangle(x1, y1, x2, y2, fill="white smoke")
+    #         label = self.canvas.create_text((x1 + x2) / 2, (y1 + y2) / 2, text=tape[j])
+    #         if head == j:
+    #             self.canvas.itemconfig(box, fill="yellow")
+
+    #     self.canvas.config(scrollregion=self.canvas.bbox('all'))
 
     def run(self):
         self.window.mainloop()

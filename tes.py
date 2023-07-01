@@ -4,8 +4,6 @@
 from tkinter import *
 from tkinter import ttk
 import collections
-from turingMachine import TuringMachine
-from Penjumlahan import additionMode
 
 # this block is for restarting the operation
 
@@ -161,7 +159,7 @@ def caller():
 
     # + operation
     if operand.get() == "+":
-        inputString = temp1 + "a" + temp2
+        inputString = temp1 + "k" + temp2
         inputLength = len(inputString) * 2
         tape = ['B'] * inputLength
         i = 1
@@ -177,7 +175,7 @@ def caller():
         # just "as-usual" turing symbols
         X, R, L, B = 'X', 'R', 'L', 'B'
         # symbol for addition
-        a = 'a'
+        a = 'k'
         increment = 0
         # a whole movement block
         while(oldHead != head):
