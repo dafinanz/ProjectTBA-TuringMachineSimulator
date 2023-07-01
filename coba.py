@@ -90,6 +90,8 @@ class TuringMachineSimulator:
 
             submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_akarkuadrat(angka1_entry.get()))
             submit_button.pack()
+        else:
+            self.result_label.configure(text="Nomor pilihan tidak valid")
         
 
     def calculate_penjumlahan(self, angka1, angka2):
