@@ -58,6 +58,8 @@ class TuringMachineSimulator:
             angka1_entry.pack()
             angka2_entry = Entry(self.window)
             angka2_entry.pack()
+            self.result_accept.configure()
+            self.result_calculation.configure()
 
             submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_perkalian(angka1_entry.get(), angka2_entry.get()))
             submit_button.pack()
@@ -292,8 +294,10 @@ class TuringMachineSimulator:
         perkalian = sumOfZero
 
         print('Accepted : ', tm.accepted_input())
+        self.result_accept.configure(text=f"Accepted : {tm.accepted_input()}")
 
         self.result_label.configure(text=f"Hasil: {perkalian}")
+        self.result_label.configure(text=f"{angka1} x {angka2} = {perkalian}")
 
     def calculate_pembagian(self, angka1, angka2):
         tm = TuringMachine()
