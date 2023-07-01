@@ -1,4 +1,5 @@
-from tkinter import Tk, Label, Entry, Button
+# from tkinter import Tk, Label, Entry, Button
+from tkinter import *
 from turingMachine import TuringMachine
 
 class TuringMachineSimulator:
@@ -18,6 +19,15 @@ class TuringMachineSimulator:
 
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
         self.submit_button.pack(anchor='w')
+
+        # input_pilihan = Frame(self.window)
+        # input_pilihan.pack(anchor='nw')
+
+        # menu_entry = Entry(self.window)
+        # menu_entry.pack(side="left")
+
+        # submit_button = Button(self.window, text="Submit", command=self.handle_submit)
+        # submit_button.pack(side="left")
 
         self.window.mainloop()
 
