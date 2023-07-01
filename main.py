@@ -275,7 +275,7 @@ if __name__ == '__main__':
         tm = TuringMachine()
         angka2 = int(input('angka : '))
         angka1 = int(input('\npangkat : '))
-        tape = {0: 'b'}
+        tape = {0: 'B'}
         index = 1
 
         for i in range(angka1):
