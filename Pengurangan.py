@@ -5,7 +5,7 @@ def substraction(self):
         self.symbols = {'0', '1', '-', '+', 'B'}
         self.blank_symbol = 'B'
         self.input_symbols = {'0', '1', '-', '+'}
-        self.initial_state = 'q0'
+        self.initial_state = 'q1'
         self.accepting_states = {'q41'}
         self.transitions = {
                             ('q1', '-'): ('q2', '-', 1),
