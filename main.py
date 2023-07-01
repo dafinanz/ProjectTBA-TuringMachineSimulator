@@ -1,5 +1,12 @@
 from tes import TuringMachine
 from Penjumlahan import additionMode
+from Pengurangan import substraction
+from Perkalian import multiplicationMode
+from Pembagian import division
+from Faktorial import faktorialMode
+from AkarKuadrat import squareroot
+from LogaritmaBiner import logaritmaMode
+from Pangkat import powerMode
 
 if __name__ == '__main__':
     print('Turing Machine Simulator\n\n1. Tambah\n2. Kurang\n3. Kali\n4. Bagi\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n')

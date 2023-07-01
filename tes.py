@@ -5,6 +5,13 @@ from typing import DefaultDict, Dict, List, Set, Tuple
 # from pydantic import BaseModel
 from typing import List, Optional
 from Penjumlahan import additionMode
+from Pengurangan import substraction
+from Perkalian import multiplicationMode
+from Pembagian import division
+from Faktorial import faktorialMode
+from AkarKuadrat import squareroot
+from LogaritmaBiner import logaritmaMode
+from Pangkat import powerMode
 # end
 
 # 1
@@ -12,6 +19,13 @@ from Penjumlahan import additionMode
 class TuringMachine:
 
     additionMode = additionMode
+    substraction = substraction
+    multiplicationMode = multiplicationMode
+    division = division
+    faktorialMode = faktorialMode
+    squareroot = squareroot
+    logaritmaMode = logaritmaMode
+    powerMode = powerMode
 
     states: Set[str] = field(init=False)
     symbols: Set[str] = field(init=False)
@@ -758,6 +772,13 @@ tm = TuringMachine()
 
 # Call the additionMode method
 tm.additionMode()
+tm.substraction()
+tm.multiplicationMode()
+tm.division()
+tm.faktorialMode()
+tm.squareroot()
+tm.logaritmaMode()
+tm.powerMode()
 
 
 # if __name__ == '__main__':
