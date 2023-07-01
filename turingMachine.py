@@ -35,7 +35,6 @@ class TuringMachine:
     accepting_states: Set[str] = field(init=False)
     transitions: Dict[Tuple[str, str],
                       Tuple[str, str, int]] = field(init=False)
-    # state, symbol -> new state, new symbol, direction
 
     head: int = field(init=False)
     tape: DefaultDict[int, str] = field(init=False)
@@ -44,9 +43,6 @@ class TuringMachine:
 
     tape_string: List[Tuple[str, str]] = field(init=False)
 
-    # end
-
-    # 2)
     def initialize(self, input_symbols: 'dict[int, str]'):
         self.head = 0
         self.halted = False
@@ -54,7 +50,6 @@ class TuringMachine:
         self.tape = defaultdict(lambda: self.blank_symbol, input_symbols)
         self.tape_string = []
 
-    # 3) sama n0.3 yg diatas
     def step(self):
         if self.halted:
             raise RuntimeError('Cannot step halted machine')
@@ -70,9 +65,6 @@ class TuringMachine:
         self.current_state = state
         self.head += direction
 
-    # end
-
-    # 4)
     def accepted_input(self):
         if not self.halted:
             raise RuntimeError('Machine still running')
@@ -90,9 +82,8 @@ class TuringMachine:
         print(f' ... state={self.current_state}')
         print(f'{" " * (2 * window + 4)}^')
 
-    # end
 
-# Create an instance of TuringMachine
+# Membuat instance turingMachine
 tm = TuringMachine()
 
 tm.penjumlahan()
