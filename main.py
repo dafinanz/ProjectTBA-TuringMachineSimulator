@@ -1,15 +1,15 @@
 from turingMachine import TuringMachine
-from Penjumlahan import additionMode
-from Pengurangan import substraction
-from Perkalian import perkalian
-from Pembagian import division
-from Faktorial import faktorialMode
-from AkarKuadrat import squareroot
+from Penjumlahan import penjumlahan_m
+from Pengurangan import pengurangan_m
+from Perkalian import perkalian_m
+from Pembagian import pembagian_m
+from Faktorial import faktorial_m
+from AkarKuadrat import akarkuadrat_m
 from LogaritmaBiner import logaritmaMode
-from Pangkat import powerMode
+from Pangkat import pangkat_m
 
 if __name__ == '__main__':
-    print('Turing Machine Simulator\n\n1. Tambah\n2. Kurang\n3. Kali\n4. Bagi\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n')
+    print('Turing Machine Simulator\n\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n')
     menu = input('pilihan : ')
 
     if menu == '1':
@@ -55,7 +55,7 @@ if __name__ == '__main__':
         tape[index] = '1'
         index += 1
 
-        tm.additionMode()
+        tm.penjumlahan()
         tm.initialize(tape)
 
         while not tm.halted:
