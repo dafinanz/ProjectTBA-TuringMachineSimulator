@@ -1,25 +1,30 @@
-from tkinter import Tk, Label, Entry, Button, Canvas, Scrollbar
-import tkinter.ttk as ttk
+from tkinter import *
+from tkinter import ttk
 from turingMachine import TuringMachine
 
 
 class TuringMachineSimulator:
     def __init__(self):
         self.window = Tk()
-        self.window.title("Turing Machine Simulator")
+        self.window.title = Label(self.window, text="Turing Machine Simulator", width=500, anchor='center', background="#3c8aae", justify='center')
+        self.window.title.config(font=("Roboto", 20), foreground="white", padx=10, pady=10)
+        self.window.title.pack(pady=(0, 20))
         self.window.geometry("800x600")
 
-        self.label = Label(self.window, text="Pilihan:\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n", justify="left")
+        self.label = Label(self.window, text="Menu:\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n", font=("Roboto", 10) , justify="left")
         self.label.pack(anchor='w')
 
-        self.label = Label(self.window, text="Pilihan:", justify="left")
+        self.label = Label(self.window, text="Choose your Menu:", justify="left")
         self.label.pack(anchor='w')
 
         self.menu_entry = Entry(self.window)
         self.menu_entry.pack(anchor='w')
 
+        button_frame = Frame(self.window)
+        button_frame.pack(anchor='w', pady=(10, 0))
+
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
-        self.submit_button.pack(anchor='w')
+        self.submit_button.pack(anchor='w', padx=(10, 0))
 
         self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
         self.restart_button.pack(anchor='w')
