@@ -1,13 +1,12 @@
 from tkinter import *
 from tkinter import ttk
 from turingMachine import TuringMachine
-from collections import defaultdict
 
 class TuringMachineSimulator:
     def __init__(self):
         self.window = Tk()
         self.window.title("Turing Machine Simulator")
-        self.window.geometry("1000x600")
+        self.window.geometry("8000x600")
 
         self.create_header()
 
@@ -55,7 +54,7 @@ class TuringMachineSimulator:
         header_label.grid(sticky="nsew", padx=110)
 
     def canvas(self):
-        self.canvas_frame = Canvas(self.window, width=8000, height=400)
+        self.canvas_frame = Canvas(self.window, width=8000, height=200)
         self.canvas_frame.grid(row=9, column=0, sticky='nsew')
 
         self.canvas = Canvas(self.canvas_frame)
