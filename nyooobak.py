@@ -99,17 +99,18 @@ class TuringMachineSimulator:
             self.result_label.config(text="\nPembagian")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid(row=5, column=0, sticky="w")
-            self.angka2_entry.grid(row=5, column=1, sticky="w")
+            self.sign.config(text="/")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
+            self.angka2_entry.grid(row=4, column=2, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pembagian(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '5':
             self.result_label.config(text="\nFaktorial")
             self.result_label.grid(row=3, column=0, sticky="w")
@@ -439,7 +440,7 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        self.result_calculation.config(text=f"{angka1} / {angka2} = {sign + str(n)}")
+        self.result_calculation.config(text=f"Hasil = {sign + str(n)}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_faktorial(self, angka1):
