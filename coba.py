@@ -265,8 +265,10 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        # result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         n = 0
         sign = ''
@@ -280,8 +282,10 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        result_calculation = Label(self.window, text=f"{angka1} - {angka2} = {sign + str(n)}")
-        result_calculation.pack(anchor='w')
+        # result_calculation = Label(self.window, text=f"{angka1} - {angka2} = {sign + str(n)}")
+        # result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"{angka1} - {angka2} = {sign + str(n)}")
+        self.result_calculation.pack(anchor='w')
 
     def calculate_perkalian(self, angka1, angka2):
         index = 0
@@ -338,12 +342,16 @@ class TuringMachineSimulator:
         perkalian = sumOfZero
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        # result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         print('Hasil =', perkalian)
-        result_calculation = Label(self.window, text=f"{angka1} x {angka2} = {perkalian}")
-        result_calculation.pack(anchor='w')
+        # result_calculation = Label(self.window, text=f"{angka1} x {angka2} = {perkalian}")
+        # result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"{angka1} x {angka2} = {perkalian}")
+        self.result_calculation.pack(anchor='w')
 
     def calculate_pembagian(self, angka1, angka2):
         tm = TuringMachine()
@@ -395,8 +403,10 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        # result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         n = 0
         sign = ''
@@ -410,8 +420,10 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        result_calculation = Label(self.window, text=f"{angka1} / {angka2} = {sign + str(n)}")
-        result_calculation.pack(anchor='w')
+        # result_calculation = Label(self.window, text=f"{angka1} / {angka2} = {sign + str(n)}")
+        # result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"{angka1} / {angka2} = {sign + str(n)}")
+        self.result_calculation.pack(anchor='w')
 
     def calculate_faktorial(self, angka1):
         tm = TuringMachine()
@@ -438,8 +450,10 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        # result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         sumOfZero = 0
         sign = 1
@@ -451,8 +465,10 @@ class TuringMachineSimulator:
         sumOfZero *= sign
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
-        result_calculation = Label(self.window, text=f"{angka1}! = {faktorial}")
-        result_calculation.pack(anchor='w')
+        # result_calculation = Label(self.window, text=f"{angka1}! = {faktorial}")
+        # result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"{angka1}! = {faktorial}")
+        self.result_calculation.pack(anchor='w')
 
     def calculate_pangkat(self, angka2, angka1):
         tm = TuringMachine()
@@ -483,8 +499,10 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        # result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         n = 0
         for i in tm.tape.values():
@@ -493,8 +511,10 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil = ', n)
-        result_calculation = Label(self.window, text=f"{angka2} ^ {angka1} = {n}")
-        result_calculation.pack(anchor='w')
+        # result_calculation = Label(self.window, text=f"{angka2} ^ {angka1} = {n}")
+        # result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"{angka2} ^ {angka1} = {n}")
+        self.result_calculation.pack(anchor='w')
 
     def calculate_logaritma(self, angka1):
         tm = TuringMachine()
@@ -514,8 +534,10 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        # result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         sumOfZero = 0
 
@@ -525,8 +547,10 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
-        result_calculation = Label(self.window, text=f"2 Log {angka1} = {result}")
-        result_calculation.pack(anchor='w')
+        # result_calculation = Label(self.window, text=f"2 Log {angka1} = {result}")
+        # result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"2 Log {angka1} = {result}")
+        self.result_calculation.pack(anchor='w')
 
     def calculate_akarkuadrat(self, angka1):
         tm = TuringMachine()
@@ -548,8 +572,10 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
+        # result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         sumOfZero = 0
 
@@ -559,8 +585,10 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'Hasil = {result}')
-        result_calculation = Label(self.window, text=f"sqrt({angka1}) = {result}")
-        result_calculation.pack(anchor='w')
+        # result_calculation = Label(self.window, text=f"sqrt({angka1}) = {result}")
+        # result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"sqrt({angka1}) = {result}")
+        self.result_calculation.pack(anchor='w')
 
     def restart_program(self):
         self.window.destroy()
