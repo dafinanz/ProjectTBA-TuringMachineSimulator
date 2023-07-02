@@ -114,7 +114,7 @@ class TuringMachineSimulator:
         perkalian = sumOfZero
 
         self.result_label.configure(text=f"Result: {result}")
-
+        
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
                         self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
 
