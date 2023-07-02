@@ -128,17 +128,19 @@ class TuringMachineSimulator:
             self.submit_operation.config(text="Go", command=lambda: self.calculate_logaritma(self.angka1_entry.get()))
             self.submit_operation.pack(anchor='w')
         elif menu == '8':
-            result_label = Label(self.window, text="\nAkar Kuadrat")
-            result_label.pack(anchor='w')
-            input1 = Label(self.window, text="Angka 1")
-            input1.pack(anchor='w')
-            angka1_entry = Entry(self.window)
-            angka1_entry.pack(anchor='w')
+            self.result_label.config(text="\nAkar Kuadrat")
+            self.result_label.pack(anchor='w')
 
-            submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_akarkuadrat(angka1_entry.get()))
-            submit_operation.pack(anchor='w')
+            self.input1.pack(anchor='w')
+            self.angka1_entry.pack(anchor='w')
+
+            self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+
+            self.submit_operation.config(text="Go", command=lambda: self.calculate_akarkuadrat(self.angka1_entry.get()))
+            self.submit_operation.pack(anchor='w')
         else:
-            self.result_label.configure(text="Nomor pilihan tidak valid")
+            self.result_label.config(text="Nomor pilihan tidak valid")
+            self.result_label.pack(anchor='w')
         
 
     def calculate_penjumlahan(self, angka1, angka2):
