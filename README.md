@@ -63,7 +63,7 @@ To begin the program, you can follow these instructions
    ```
 2. Run the program in `gui.py`
    ```PY
-   python3 gui.py
+   mainGui.py
    ```
 
 ## Acknowledgement
