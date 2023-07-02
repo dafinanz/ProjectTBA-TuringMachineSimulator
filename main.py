@@ -348,7 +348,7 @@ if __name__ == '__main__':
         print('\n\nLogaritma Biner')
         tm = TuringMachine()
         angka1 = int(input('\n2 log : '))
-        tape = {0: 'b'}
+        tape = {0: 'B'}
         index = 0
         for i in range(angka1):
             tape[index] = '0'
@@ -377,7 +377,7 @@ if __name__ == '__main__':
         print('\n\nAkar Kuadrat')
         tm = TuringMachine()
         angka1 = int(input('\nAkar Kuadrat : '))
-        tape = {0: 'b'}
+        tape = {0: 'B'}
         index = 0
         for i in range(angka1):
             tape[index] = '0'
