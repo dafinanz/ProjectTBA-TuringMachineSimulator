@@ -7,7 +7,7 @@ class TuringMachineSimulator:
     def __init__(self):
         self.window = Tk()
         self.window.title("Turing Machine Simulator")
-        self.window.geometry("600x600")
+        self.window.geometry("1000x600")
 
         self.create_header()
 
@@ -55,22 +55,26 @@ class TuringMachineSimulator:
         header_label.grid(sticky="nsew", padx=110)
 
     def canvas(self):
-        self.canvas_frame = Canvas(self.window, width=800, height=400)
+        self.canvas_frame = Canvas(self.window, width=8000, height=400)
         self.canvas_frame.grid(row=9, column=0, sticky='nsew')
 
-        self.canvas_obj = Canvas(self.canvas_frame)
-        self.canvas_obj.grid(row=9, column=0, sticky='nsew')
+        self.canvas = Canvas(self.canvas_frame)
+        self.canvas.grid(row=9, column=0, sticky='nsew')
 
-        self.scrollbar = Scrollbar(self.canvas_frame, orient='vertical', command=self.canvas_obj.yview)
-        self.scrollbar.grid(row=9, column=0, sticky='ns')
+        self.scrollbar = Scrollbar(self.canvas_frame, orient='horizontal', command=self.canvas.yview)
+        self.scrollbar.grid(row=9, column=0, sticky='ew')
 
-        self.canvas_obj.configure(yscrollcommand=self.scrollbar.set)
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
 
         self.frame_output = ttk.LabelFrame(self.window, text="Output", width=600)
         self.frame_output.grid(row=9, column=0, sticky='nsew')
 
         self.canvas_output = Canvas(self.frame_output, width=600, height=300)
         self.canvas_output.grid(row=9, column=0, sticky='nsew')
+
+        # Assign self.canvas_output to self.canvas
+        self.canvas = self.canvas_output
+
 
     def handle_submit(self):
         menu = self.menu_entry.get()
@@ -277,15 +281,20 @@ class TuringMachineSimulator:
                         self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
 
     def drawInline(self, index, x1, x2, y1, y2, counter, tape, head):
-        self.canvas_obj.create_rectangle(x1, y1 + counter * 40, x2, y2 + counter * 40, outline='black')
+        x1 = 50  
+        y1 = 50 
+        x2 = 200 
+        y2 = 100 
+        self.canvas.create_rectangle(x1, y1 + counter * 40, x2, y2 + counter * 40, outline='black')
 
         for i in range(head - 10, head + 11):
             if i == head:
-                self.canvas_obj.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40, fill='lightgreen')
-                self.canvas_obj.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
+                self.canvas.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40, fill='lightgreen')
+                self.canvas.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
             else:
-                self.canvas_obj.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40)
-                self.canvas_obj.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
+                self.canvas.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40)
+                self.canvas.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
+
 
 
     def restart_program(self):
