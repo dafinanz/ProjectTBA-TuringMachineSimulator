@@ -66,4 +66,10 @@ To begin the program, you can follow these instructions
    python3 gui.py
    ```
 
+## Acknoledgement
+- Aisyah Hayya Imani (https://github.com/Aisyahayya)
+- Asyahra Rahmasari Ariyahaq (https://github.com/asyahra19)
+- Dafina Nazhifah (https://github.com/dafinanz)
+- Dwi Sinta Anggraini (https://github.com/dwisintangrn)
+
 [product-screenshot]: img/screenshot.png
