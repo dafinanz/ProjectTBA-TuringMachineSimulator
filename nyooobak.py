@@ -123,7 +123,6 @@ class TuringMachineSimulator:
             self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
-            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_faktorial(self.angka1_entry.get()))
             self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
@@ -131,32 +130,33 @@ class TuringMachineSimulator:
             self.result_label.config(text="\nPangkat")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid(row=5, column=0, sticky="w")
-            self.angka2_entry.grid(row=5, column=1, sticky="w")
+            self.sign.config(text="^")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
+            self.angka2_entry.grid(row=4, column=2, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pangkat(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '7':
             self.result_label.config(text="\nLogaritma Biner")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
+            self.sign.config(text="2 log")
+            self.sign.grid(row=4, column=0, sticky="nsew")
+
             self.angka1_entry.grid(row=4, column=1, sticky="w")
 
-            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
             self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
-            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_logaritma(self.angka1_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '8':
             self.result_label.config(text="\nAkar Kuadrat")
             self.result_label.grid(row=3, column=0, sticky="w")
@@ -482,7 +482,7 @@ class TuringMachineSimulator:
         sumOfZero *= sign
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
-        self.result_calculation.config(text=f"{angka1}! = {faktorial}")
+        self.result_calculation.config(text=f"Hasil = {faktorial}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_pangkat(self, angka2, angka1):
@@ -524,7 +524,7 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil = ', n)
-        self.result_calculation.config(text=f"{angka2} ^ {angka1} = {n}")
+        self.result_calculation.config(text=f"Hasil = {n}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_logaritma(self, angka1):
@@ -556,7 +556,7 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
-        self.result_calculation.config(text=f"2 Log {angka1} = {result}")
+        self.result_calculation.config(text=f"Hasil = {result}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_akarkuadrat(self, angka1):
@@ -590,7 +590,7 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'Hasil = {result}')
-        self.result_calculation.config(text=f"sqrt({angka1}) = {result}")
+        self.result_calculation.config(text=f"Hasil = {result}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def restart_program(self):
