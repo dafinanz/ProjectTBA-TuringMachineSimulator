@@ -20,9 +20,6 @@ class TuringMachineSimulator:
         self.menu_entry = Entry(self.window)
         self.menu_entry.pack(anchor='w')
 
-        self.button_frame = Frame(self.window)
-        self.button_frame.pack(anchor='w')
-
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
         self.submit_button.pack(side='left')
 
