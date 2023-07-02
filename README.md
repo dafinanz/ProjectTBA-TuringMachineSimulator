@@ -7,15 +7,15 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#feature">Feature</a></li>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#Feature">Feature</a></li>
+        <li><a href="#Built-with">Built With</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#install-and-run">Install and Run</a></li>
+        <li><a href="#Prerequisites">Prerequisites</a></li>
+        <li><a href="#Install-and-run">Install and Run</a></li>
       </ul>
     </li>
     <li>
@@ -26,24 +26,24 @@
 
 ## About The Project
 
-![GUI of this simulator][product-screenshot]
+![GUI of this simulator][image-screenshot]
 
-This Project is made for final task in "Language Theory and Automata"
+This Project is made for final task in "Language Theory and Automata". We made a single tape simulator of Turing Machine that works for basic mathematical operation, give the result, and the final state of the operation
 
-### feature
+## Feature
 
-Here's the operations we mentioned above:
+Here's the operations that we mentioned above:
 
 - Addition --> integer
 - Substraction --> integer
 - Multiplication --> integer
 - Division --> integer
 - Factorial --> positive integer
-- Modulo --> positive integer
 - Power --> positive integer
+- Square root --> positive integer
 - Binary log --> both input and output must be positive integer
 
-### built-with
+## Built-with
 
 We built the program from these following technologies. Click the links below for installation/documentation.
 
@@ -54,14 +54,20 @@ We built the program from these following technologies. Click the links below fo
 
 To begin the program, you can follow these instructions
 
-### prerequisites
+## Prerequisites
+You can get our tech-stack by following the commands bellow (of course you don't have to if you already have it).
 
-### install-and-run
+- python (for linux user, for windows just click the download link in "Built With")
+  ```sh
+  sudo apt install python3
+  ```
+
+## Install-and-run
 1. Clone the repo
    ```sh
    git clone https://github.com/dafinanz/ProjectTBA-TuringMachineSimulator
    ```
-2. Run the program in `gui.py`
+2. Run the program in `mainGui.py`
    ```PY
    mainGui.py
    ```
@@ -72,4 +78,4 @@ To begin the program, you can follow these instructions
 - Dafina Nazhifah (https://github.com/dafinanz)
 - Dwi Sinta Anggraini (https://github.com/dwisintangrn)
 
-[product-screenshot]: img/screenshot.png
+[image-screenshot]: img/screenshot.png
