@@ -78,43 +78,57 @@ class TuringMachineSimulator:
             self.submit_operation.config(text="Go", command=lambda: self.calculate_perkalian(self.angka1_entry.get(), self.angka2_entry.get()))
             self.submit_operation.pack(anchor='w')
         elif menu == '4':
-            result_label = Label(self.window, text="\nPembagian")
-            result_label.pack(anchor='w')
-            input1 = Label(self.window, text="Angka 1")
-            input1.pack(anchor='w')
-            angka1_entry = Entry(self.window)
-            angka1_entry.pack(anchor='w')
-            input2 = Label(self.window, text="Angka 2")
-            input2.pack(anchor='w')
-            angka2_entry = Entry(self.window)
-            angka2_entry.pack(anchor='w')
+            self.result_label.config(text="\nPembagian")
+            self.result_label.pack(anchor='w')
 
-            submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_pembagian(angka1_entry.get(), angka2_entry.get()))
-            submit_operation.pack(anchor='w')
+            self.input1.pack(anchor='w')
+            self.angka1_entry.pack(anchor='w')
+            self.input2.pack(anchor='w')
+            self.angka2_entry.pack(anchor='w')
+
+            self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
+
+            self.submit_operation.config(text="Go", command=lambda: self.calculate_pembagian(self.angka1_entry.get(), self.angka2_entry.get()))
+            self.submit_operation.pack(anchor='w')
         elif menu == '5':
-            result_label = Label(self.window, text="\nFaktorial")
-            result_label.pack(anchor='w')
-            input1 = Label(self.window, text="Angka 1")
-            input1.pack(anchor='w')
-            angka1_entry = Entry(self.window)
-            angka1_entry.pack(anchor='w')
+            # result_label = Label(self.window, text="\nFaktorial")
+            # result_label.pack(anchor='w')
+            # input1 = Label(self.window, text="Angka 1")
+            # input1.pack(anchor='w')
+            # angka1_entry = Entry(self.window)
+            # angka1_entry.pack(anchor='w')
 
-            submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_faktorial(angka1_entry.get()))
-            submit_operation.pack(anchor='w')
+            # submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_faktorial(angka1_entry.get()))
+            # submit_operation.pack(anchor='w')
+
+            self.result_label.config(text="\nFaktorial")
+            self.result_label.pack(anchor='w')
+
+            self.input1.pack(anchor='w')
+            self.angka1_entry.pack(anchor='w')
+            # self.input2.pack(anchor='w')
+            # self.angka2_entry.pack(anchor='w')
+
+            self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            # self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
+
+            self.submit_operation.config(text="Go", command=lambda: self.calculate_faktorial(self.angka1_entry.get(), self.angka2_entry.get()))
+            self.submit_operation.pack(anchor='w')
         elif menu == '6':
-            result_label = Label(self.window, text="\nPangkat")
-            result_label.pack(anchor='w')
-            input1 = Label(self.window, text="Angka 1")
-            input1.pack(anchor='w')
-            angka2_entry = Entry(self.window)
-            angka2_entry.pack(anchor='w')
-            input2 = Label(self.window, text="Angka 2")
-            input2.pack(anchor='w')
-            angka1_entry = Entry(self.window)
-            angka1_entry.pack(anchor='w')
+            self.result_label.config(text="\nPangkat")
+            self.result_label.pack(anchor='w')
 
-            submit_operation = Button(self.window, text="Submit", command=lambda: self.calculate_pangkat(angka2_entry.get(), angka1_entry.get()))
-            submit_operation.pack(anchor='w')
+            self.input1.pack(anchor='w')
+            self.angka2_entry.pack(anchor='w')
+            self.input2.pack(anchor='w')
+            self.angka1_entry.pack(anchor='w')
+
+            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
+
+            self.submit_operation.config(text="Go", command=lambda: self.calculate_pangkat(self.angka1_entry.get(), self.angka2_entry.get()))
+            self.submit_operation.pack(anchor='w')
         elif menu == '7':
             result_label = Label(self.window, text="\nLogaritma")
             result_label.pack(anchor='w')
