@@ -6,7 +6,7 @@ class TuringMachineSimulator:
     def __init__(self):
         self.window = Tk()
         self.window.title("Turing Machine Simulator")
-        self.window.geometry("8000x600")
+        self.window.geometry("600x600")
 
         self.create_header()
 
@@ -54,10 +54,10 @@ class TuringMachineSimulator:
         header_label.grid(sticky="nsew", padx=110)
 
     def canvas(self):
-        self.canvas_frame = Canvas(self.window, width=8000, height=200)
+        self.canvas_frame = Canvas(self.window)
         self.canvas_frame.grid(row=9, column=0, sticky='nsew')
 
-        self.canvas = Canvas(self.canvas_frame)
+        self.canvas = Canvas(self.canvas_frame, width=600, height=200)
         self.canvas.grid(row=9, column=0, sticky='nsew')
 
         self.scrollbar = Scrollbar(self.canvas_frame, orient='horizontal', command=self.canvas.yview)
@@ -166,7 +166,7 @@ class TuringMachineSimulator:
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
-            self.submit_operation.config(text="Go", command=lambda: self.calculate_pangkat(self.angka1_entry.get(), self.angka2_entry.get()))
+            self.submit_operation.config(text="Go", command=lambda: self.calculate_pangkat(self.angka2_entry.get(), self.angka1_entry.get()))
             self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '7':
             self.result_label.config(text="\nLogaritma Biner")
@@ -204,6 +204,9 @@ class TuringMachineSimulator:
         
 
     def calculate_penjumlahan(self, angka1, angka2):
+
+        self.clearCanvas()
+
         angka1 = int(angka1)
         angka2 = int(angka2)
         tape = {0: 'B'}
@@ -273,8 +276,394 @@ class TuringMachineSimulator:
         self.result_calculation.config(text=f"{angka1} + {angka2} = {sign + str(n)}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
-        result = ''.join([tm.tape[i] for i in range(tm.head + 1, index)]).strip('0')
-        self.result_label.configure(text=f"Result: {result}")
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
+
+    def calculate_pengurangan(self, angka1, angka2):
+
+        self.clearCanvas()
+
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        angka2 = int(angka2)
+        tape = {0: 'B'}
+        index = 1
+
+        index -= 1
+        if angka1 < 0:
+            angka1 = angka1 * -1
+            tape[index] = '-'
+            index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
+        else:
+            tape[index] = '+'
+            index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        if angka2 < 0:
+            angka2 = angka2 * -1
+            tape[index] = '-'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
+        else:
+            tape[index] = '+'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        tm.pengurangan()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.grid(row=7, column=0, sticky="w")
+
+        n = 0
+        sign = ''
+        for i in tm.tape.values():
+            if i == '-':
+                sign = '-'
+            elif i == '+':
+                sign = '+'   
+            elif i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
+        print('Hasil =', sign + str(n))
+        self.result_calculation.config(text=f"{angka1} - {angka2} = {sign + str(n)}")
+        self.result_calculation.grid(row=8, column=0, sticky="w")
+
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
+
+    def calculate_perkalian(self, angka1, angka2):
+
+        self.clearCanvas()
+
+        index = 0
+        tape = {}
+        if angka1[0] == '-':
+            tape[index] = '-'
+            index += 1
+            angka1 = angka1[1:]
+        else:
+            tape[index] = '+'
+            index += 1
+
+        angka1 = int(angka1)
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        if angka2[0] == '-':
+            tape[index] = '-'
+            index += 1
+            angka2 = angka2[1:]
+        else:
+            tape[index] = '+'
+            index += 1
+
+        angka2 = int(angka2)
+        for i in range(angka2):
+            tape[index] = '0'
+            index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        tm = TuringMachine()
+
+        tm.perkalian()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        sumOfZero = 0
+        sign = 1
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+            elif x == '-':
+                sign *= -1
+        sumOfZero *= sign
+        perkalian = sumOfZero
+
+        print('Accepted : ', tm.accepted_input())
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.grid(row=7, column=0, sticky="w")
+
+        print('Hasil =', perkalian)
+        self.result_calculation.config(text=f"{angka1} x {angka2} = {perkalian}")
+        self.result_calculation.grid(row=8, column=0, sticky="w")
+
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
+
+    def calculate_pembagian(self, angka1, angka2):
+
+        self.clearCanvas()
+
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        angka2 = int(angka2)
+        tape = {0: 'B'}
+        index = 1
+
+        index -= 1
+        if angka1 < 0:
+            angka1 = angka1 * -1
+            tape[index] = '-'
+            index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
+        else:
+            tape[index] = '+'
+            index += 1
+            for i in range(angka1):
+                tape[index] = '0'
+                index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        if angka2 < 0:
+            angka2 = angka2 * -1
+            tape[index] = '-'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
+        else:
+            tape[index] = '+'
+            index += 1
+            for i in range(angka2):
+                tape[index] = '0'
+                index += 1
+        
+        tape[index] = '1'
+        index += 1
+
+        tm.pembagian()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.grid(row=7, column=0, sticky="w")
+
+        n = 0
+        sign = ''
+        for i in tm.tape.values():
+            if i == '-':
+                sign = '-'
+            elif i == '+':
+                sign = '+'   
+            elif i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
+        print('Hasil =', sign + str(n))
+        self.result_calculation.config(text=f"{angka1} / {angka2} = {sign + str(n)}")
+        self.result_calculation.grid(row=8, column=0, sticky="w")
+
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
+
+    def calculate_faktorial(self, angka1):
+
+        self.clearCanvas()
+
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        tape = {0: 'B'}
+        index = 0
+
+        tape[index] = '1'
+        index += 1
+
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+        
+        tape[index] = '1'
+        index += 1
+
+
+        tm.faktorial()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.grid(row=7, column=0, sticky="w")
+
+        sumOfZero = 0
+        sign = 1
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+            elif x == '-':
+                sign *= -1
+        sumOfZero *= sign
+        faktorial = sumOfZero
+        print(f'Hasil: {faktorial}')
+        self.result_calculation.config(text=f"{angka1}! = {faktorial}")
+        self.result_calculation.grid(row=8, column=0, sticky="w")
+
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
+
+    def calculate_pangkat(self, angka2, angka1):
+
+        self.clearCanvas()
+
+        tm = TuringMachine()
+        angka2 = int(angka2)
+        angka1 = int(angka1)
+        tape = {0: 'B'}
+        index = 1
+
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        for i in range(angka2):
+            tape[index] = '0'
+            index += 1
+
+        tape[index] = '1'
+        index += 1
+
+        tm.pangkat()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.grid(row=7, column=0, sticky="w")
+
+        n = 0
+        for i in tm.tape.values():
+            if i == '0':
+                n += 1
+            elif i == '-0':
+                n -= 1
+        print('Hasil = ', n)
+        self.result_calculation.config(text=f"{angka2} ^ {angka1} = {n}")
+        self.result_calculation.grid(row=8, column=0, sticky="w")
+
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
+
+    def calculate_logaritma(self, angka1):
+
+        self.clearCanvas()
+
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        tape = {0: 'b'}
+        index = 0
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+
+        tm.logaritma()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.grid(row=7, column=0, sticky="w")
+
+        sumOfZero = 0
+
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+
+        result = sumOfZero
+        print(f'2 Log {angka1} = {result}')
+        self.result_calculation.config(text=f"2 Log {angka1} = {result}")
+        self.result_calculation.grid(row=8, column=0, sticky="w")
+
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
+
+    def calculate_akarkuadrat(self, angka1):
+
+        self.clearCanvas()
+
+        tm = TuringMachine()
+        angka1 = int(angka1)
+        tape = {0: 'b'}
+        index = 0
+        for i in range(angka1):
+            tape[index] = '0'
+            index += 1
+
+            tape[index] = '1'
+            index == 1
+
+        tm.akarkuadrat()
+        tm.initialize(tape)
+
+        while not tm.halted:
+            tm.print()
+            tm.step()
+
+        print('Accepted : ', tm.accepted_input())
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.grid(row=7, column=0, sticky="w")
+
+        sumOfZero = 0
+
+        for x in tm.tape.values():
+            if x == '0':
+                sumOfZero += 1
+
+        result = sumOfZero
+        print(f'Hasil = {result}')
+        self.result_calculation.config(text=f"sqrt({angka1}) = {result}")
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
                         self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
@@ -286,7 +675,7 @@ class TuringMachineSimulator:
         y2 = 100 
         self.canvas.create_rectangle(x1, y1 + counter * 40, x2, y2 + counter * 40, outline='black')
 
-        for i in range(head - 10, head + 11):
+        for i in range(head - 20, head + 21):
             if i == head:
                 self.canvas.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40, fill='lightgreen')
                 self.canvas.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
@@ -294,7 +683,8 @@ class TuringMachineSimulator:
                 self.canvas.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40)
                 self.canvas.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
 
-
+    def clearCanvas(self):
+        self.canvas.delete("all")
 
     def restart_program(self):
         self.window.destroy()
