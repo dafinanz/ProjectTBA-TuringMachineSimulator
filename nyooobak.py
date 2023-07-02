@@ -115,17 +115,18 @@ class TuringMachineSimulator:
             self.result_label.config(text="\nFaktorial")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
+            self.sign.config(text="!")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
             self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_faktorial(self.angka1_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '6':
             self.result_label.config(text="\nPangkat")
             self.result_label.grid(row=3, column=0, sticky="w")
