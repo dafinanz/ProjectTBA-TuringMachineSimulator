@@ -1,4 +1,3 @@
-# from tkinter import Tk, Label, Entry, Button
 from tkinter import *
 from turingMachine import TuringMachine
 
@@ -9,27 +8,29 @@ class TuringMachineSimulator:
         self.window.geometry("800x600")
 
         self.label = Label(self.window, text="Pilihan:\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n", justify="left")
-        self.label.pack(anchor='w')
+        self.label.grid(row=0, column=0, sticky="w")
 
         self.label = Label(self.window, text="Pilihan:", justify="left")
-        self.label.pack(anchor='w')
+        self.label.grid(row=1, column=0, sticky="w")
 
         self.menu_entry = Entry(self.window)
-        self.menu_entry.pack(anchor='w')
+        self.menu_entry.grid(row=1, column=1, sticky="w")
 
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
-        self.submit_button.pack(anchor='w')
+        self.submit_button.grid(row=2, column=0, sticky="w")
 
         self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
-        self.restart_button.pack(anchor='w')
+        self.restart_button.grid(row=2, column=1, sticky="w")
 
         self.result_label = Label(self.window, text="")
+
         self.input1 = Label(self.window, text="Angka 1")
         self.angka1_entry = Entry(self.window)
+
         self.input2 = Label(self.window, text="Angka 2")
         self.angka2_entry = Entry(self.window)
-        self.submit_operation = Button(self.window, text="")
 
+        self.submit_operation = Button(self.window, text="")
         self.result_accept = Label(self.window, text="")
         self.result_calculation = Label(self.window, text="")
 
@@ -40,107 +41,124 @@ class TuringMachineSimulator:
 
         if menu == '1':
             self.result_label.config(text="\nPenjumlahan")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
-            self.input2.pack(anchor='w')
-            self.angka2_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
+
+            self.input2.grid(row=5, column=0, sticky="w")
+            self.angka2_entry.grid(row=5, column=1, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_penjumlahan(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '2':
             self.result_label.config(text="\nPengurangan")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
-            self.input2.pack(anchor='w')
-            self.angka2_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
+
+            self.input2.grid(row=5, column=0, sticky="w")
+            self.angka2_entry.grid(row=5, column=1, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pengurangan(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '3':
             self.result_label.config(text="\nPerkalian")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
-            self.input2.pack(anchor='w')
-            self.angka2_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
+
+            self.input2.grid(row=5, column=0, sticky="w")
+            self.angka2_entry.grid(row=5, column=1, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_perkalian(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '4':
             self.result_label.config(text="\nPembagian")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
-            self.input2.pack(anchor='w')
-            self.angka2_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
+
+            self.input2.grid(row=5, column=0, sticky="w")
+            self.angka2_entry.grid(row=5, column=1, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pembagian(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '5':
             self.result_label.config(text="\nFaktorial")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
+
+            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
+            self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_faktorial(self.angka1_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '6':
             self.result_label.config(text="\nPangkat")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka2_entry.pack(anchor='w')
-            self.input2.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
 
-            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
-            self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
+            self.input2.grid(row=5, column=0, sticky="w")
+            self.angka2_entry.grid(row=5, column=1, sticky="w")
+
+            self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pangkat(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '7':
             self.result_label.config(text="\nLogaritma Biner")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
+
+            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
+            self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_logaritma(self.angka1_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         elif menu == '8':
             self.result_label.config(text="\nAkar Kuadrat")
-            self.result_label.pack(anchor='w')
+            self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.pack(anchor='w')
-            self.angka1_entry.pack(anchor='w')
+            self.input1.grid(row=4, column=0, sticky="w")
+            self.angka1_entry.grid(row=4, column=1, sticky="w")
+
+            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
+            self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_akarkuadrat(self.angka1_entry.get()))
-            self.submit_operation.pack(anchor='w')
+            self.submit_operation.grid(row=6, column=0, sticky="w")
         else:
             self.result_label.config(text="Nomor pilihan tidak valid")
             self.result_label.pack(anchor='w')
@@ -198,7 +216,7 @@ class TuringMachineSimulator:
 
         print('Accepted : ', tm.accepted_input())
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         n = 0
         sign = ''
@@ -213,7 +231,7 @@ class TuringMachineSimulator:
                 n -= 1
         print('Hasil =', sign + str(n))
         self.result_calculation.config(text=f"{angka1} + {angka2} = {sign + str(n)}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_pengurangan(self, angka1, angka2):
         tm = TuringMachine()
@@ -265,10 +283,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        # result_accept.pack(anchor='w')
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         n = 0
         sign = ''
@@ -282,10 +298,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        # result_calculation = Label(self.window, text=f"{angka1} - {angka2} = {sign + str(n)}")
-        # result_calculation.pack(anchor='w')
         self.result_calculation.config(text=f"{angka1} - {angka2} = {sign + str(n)}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_perkalian(self, angka1, angka2):
         index = 0
@@ -342,16 +356,12 @@ class TuringMachineSimulator:
         perkalian = sumOfZero
 
         print('Accepted : ', tm.accepted_input())
-        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        # result_accept.pack(anchor='w')
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         print('Hasil =', perkalian)
-        # result_calculation = Label(self.window, text=f"{angka1} x {angka2} = {perkalian}")
-        # result_calculation.pack(anchor='w')
         self.result_calculation.config(text=f"{angka1} x {angka2} = {perkalian}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_pembagian(self, angka1, angka2):
         tm = TuringMachine()
@@ -403,10 +413,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        # result_accept.pack(anchor='w')
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         n = 0
         sign = ''
@@ -420,10 +428,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        # result_calculation = Label(self.window, text=f"{angka1} / {angka2} = {sign + str(n)}")
-        # result_calculation.pack(anchor='w')
         self.result_calculation.config(text=f"{angka1} / {angka2} = {sign + str(n)}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_faktorial(self, angka1):
         tm = TuringMachine()
@@ -450,10 +456,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        # result_accept.pack(anchor='w')
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         sumOfZero = 0
         sign = 1
@@ -465,10 +469,8 @@ class TuringMachineSimulator:
         sumOfZero *= sign
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
-        # result_calculation = Label(self.window, text=f"{angka1}! = {faktorial}")
-        # result_calculation.pack(anchor='w')
         self.result_calculation.config(text=f"{angka1}! = {faktorial}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_pangkat(self, angka2, angka1):
         tm = TuringMachine()
@@ -499,10 +501,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        # result_accept.pack(anchor='w')
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         n = 0
         for i in tm.tape.values():
@@ -511,10 +511,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil = ', n)
-        # result_calculation = Label(self.window, text=f"{angka2} ^ {angka1} = {n}")
-        # result_calculation.pack(anchor='w')
         self.result_calculation.config(text=f"{angka2} ^ {angka1} = {n}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_logaritma(self, angka1):
         tm = TuringMachine()
@@ -534,10 +532,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        # result_accept.pack(anchor='w')
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         sumOfZero = 0
 
@@ -547,10 +543,8 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
-        # result_calculation = Label(self.window, text=f"2 Log {angka1} = {result}")
-        # result_calculation.pack(anchor='w')
         self.result_calculation.config(text=f"2 Log {angka1} = {result}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def calculate_akarkuadrat(self, angka1):
         tm = TuringMachine()
@@ -572,10 +566,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        # result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        # result_accept.pack(anchor='w')
         self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
-        self.result_accept.pack(anchor='w')
+        self.result_accept.grid(row=7, column=0, sticky="w")
 
         sumOfZero = 0
 
@@ -585,10 +577,8 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'Hasil = {result}')
-        # result_calculation = Label(self.window, text=f"sqrt({angka1}) = {result}")
-        # result_calculation.pack(anchor='w')
         self.result_calculation.config(text=f"sqrt({angka1}) = {result}")
-        self.result_calculation.pack(anchor='w')
+        self.result_calculation.grid(row=8, column=0, sticky="w")
 
     def restart_program(self):
         self.window.destroy()
