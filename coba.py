@@ -23,14 +23,12 @@ class TuringMachineSimulator:
         self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
         self.restart_button.pack(anchor='w')
 
-        # input_pilihan = Frame(self.window)
-        # input_pilihan.pack(anchor='nw')
-
-        # menu_entry = Entry(self.window)
-        # menu_entry.pack(side="left")
-
-        # submit_button = Button(self.window, text="Submit", command=self.handle_submit)
-        # submit_button.pack(side="left")
+        self.result_label = Label(self.window, text="")
+        self.input1 = Label(self.window, text="Angka 1")
+        self.angka1_entry = Entry(self.window)
+        self.input2 = Label(self.window, text="Angka 2")
+        self.angka2_entry = Entry(self.window)
+        self.submit_operation = Button(self.window, text="")
 
         self.window.mainloop()
 
@@ -38,19 +36,19 @@ class TuringMachineSimulator:
         menu = self.menu_entry.get()
 
         if menu == '1':
-            result_label = Label(self.window, text="\nPenjumlahan")
-            result_label.pack(anchor='w')
-            input1 = Label(self.window, text="Angka 1")
-            input1.pack(anchor='w')
-            angka1_entry = Entry(self.window)
-            angka1_entry.pack(anchor='w')
-            input2 = Label(self.window, text="Angka 2")
-            input2.pack(anchor='w')
-            angka2_entry = Entry(self.window)
-            angka2_entry.pack(anchor='w')
+            self.result_label.config(text="\nPenjumlahan")
+            self.result_label.pack(anchor='w')
 
-            submit_operation = Button(self.window, text="Go", command=lambda: self.calculate_penjumlahan(angka1_entry.get(), angka2_entry.get()))
-            submit_operation.pack(anchor='w')
+            self.input1.pack(anchor='w')
+            self.angka1_entry.pack(anchor='w')
+            self.input2.pack(anchor='w')
+            self.angka2_entry.pack(anchor='w')
+
+            self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
+            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
+
+            self.submit_operation.config(text="Go", command=lambda: self.calculate_penjumlahan(self.angka1_entry.get(), self.angka2_entry.get()))
+            self.submit_operation.pack(anchor='w')
         elif menu == '2':
             result_label = Label(self.window, text="\nPengurangan")
             result_label.pack(anchor='w')
