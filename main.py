@@ -199,7 +199,8 @@ if __name__ == '__main__':
                 sign *= -1
         sumOfZero *= sign
         perkalian = sumOfZero
-          
+
+        print('Hasil =', perkalian)
 
     elif pilihan == '4':
         print('\n\nPembagian')
