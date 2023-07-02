@@ -17,10 +17,10 @@ class TuringMachineSimulator:
         self.menu_entry.grid(row=1, column=1, sticky="w")
 
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
-        self.submit_button.grid(row=2, column=0, sticky="w")
+        self.submit_button.grid(row=1, column=2, sticky="w")
 
-        self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
-        self.restart_button.grid(row=2, column=1, sticky="w")
+        # self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
+        # self.restart_button.grid(row=2, column=0, sticky="w")
 
         self.result_label = Label(self.window, text="")
 
