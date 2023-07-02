@@ -1,1 +1,1 @@
-        self.window.title.pack(pady=(0, 20))
+width=500,

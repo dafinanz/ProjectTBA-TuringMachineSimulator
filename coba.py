@@ -7,17 +7,25 @@ class TuringMachineSimulator:
         self.window.title("Turing Machine Simulator")
         self.window.geometry("800x600")
 
-        self.label = Label(self.window, text="Pilihan:\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n", justify="left")
-        self.label.grid(row=0, column=0, sticky="w")
+        # Create a frame widget for the header background
+        header_frame = Frame(self.window, bg="#3c8aae")
+        header_frame.grid(row=0, column=0, columnspan=2, sticky="ew")
 
-        self.label = Label(self.window, text="Pilihan:", justify="left")
+        # Create a label widget for the header title inside the frame
+        header_label = Label(header_frame, text="Turing Machine Simulator", font=("Roboto", 24, "bold"), fg="white", bg="#3c8aae", anchor="center")
+        header_label.grid(padx=10, pady=10)
+
+        self.label = Label(self.window, text="Pilihan:\n1. Penjumlahan\n2. Pengurangan\n3. Perkalian\n4. Pembagian\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat\n", justify="left")
         self.label.grid(row=1, column=0, sticky="w")
 
+        self.label = Label(self.window, text="Pilihan:", justify="left")
+        self.label.grid(row=2, column=0, sticky="w")
+
         self.menu_entry = Entry(self.window)
-        self.menu_entry.grid(row=1, column=1, sticky="w")
+        self.menu_entry.grid(row=2, column=1, sticky="w")
 
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
-        self.submit_button.grid(row=1, column=2, sticky="w")
+        self.submit_button.grid(row=2, column=2, sticky="w")
 
         # self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
         # self.restart_button.grid(row=2, column=0, sticky="w")
