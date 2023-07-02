@@ -20,6 +20,9 @@ class TuringMachineSimulator:
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
         self.submit_button.pack(anchor='w')
 
+        self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
+        self.restart_button.pack(anchor='w')
+
         # input_pilihan = Frame(self.window)
         # input_pilihan.pack(anchor='nw')
 
@@ -554,6 +557,10 @@ class TuringMachineSimulator:
         result_calculation = Label(self.window, text=f"sqrt({angka1}) = {result}")
         result_calculation.pack(anchor='w')
 
+    def restart_program(self):
+        self.window.destroy()
+        TuringMachineSimulator()
+    
     def run(self):
         self.window.mainloop()
 

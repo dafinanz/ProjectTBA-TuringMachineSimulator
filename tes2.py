@@ -50,10 +50,10 @@ class TuringMachineSimulator:
             angka2_entry = Entry(self.window)
             angka2_entry.pack()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_multiplication(angka1_entry.get(), angka2_entry.get()))
+            submit_button = Button(self.window, text="Submit", command=lambda: self.perkalian_m(angka1_entry.get(), angka2_entry.get()))
             submit_button.pack()
 
-    def calculate_multiplication(self, angka1, angka2):
+    def perkalian_m(self, angka1, angka2):
         index = 0
         tape = {}
         if angka1[0] == '-':
