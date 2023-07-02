@@ -30,6 +30,9 @@ class TuringMachineSimulator:
         self.angka2_entry = Entry(self.window)
         self.submit_operation = Button(self.window, text="")
 
+        self.result_accept = Label(self.window, text="")
+        self.result_calculation = Label(self.window, text="")
+
         self.window.mainloop()
 
     def handle_submit(self):
@@ -194,8 +197,8 @@ class TuringMachineSimulator:
             tm.step()
 
         print('Accepted : ', tm.accepted_input())
-        result_accept = Label(self.window, text=f"Accepted : {tm.accepted_input()}")
-        result_accept.pack(anchor='w')
+        self.result_accept.config(text=f"Accepted : {tm.accepted_input()}")
+        self.result_accept.pack(anchor='w')
 
         n = 0
         sign = ''
@@ -209,8 +212,8 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        result_calculation = Label(self.window, text=f"{angka1} + {angka2} = {sign + str(n)}")
-        result_calculation.pack(anchor='w')
+        self.result_calculation.config(text=f"{angka1} + {angka2} = {sign + str(n)}")
+        self.result_calculation.pack(anchor='w')
 
     def calculate_pengurangan(self, angka1, angka2):
         tm = TuringMachine()
