@@ -690,10 +690,6 @@ class TuringMachineSimulator:
 
     def clearCanvas(self):
         self.canvas.delete("all")
-
-    def restart_program(self):
-        self.window.destroy()
-        TuringMachineSimulator()
     
     def run(self):
         self.window.mainloop()
