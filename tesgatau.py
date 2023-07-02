@@ -1,25 +1,31 @@
-from tkinter import Tk, Label, Entry, Button, Canvas, Scrollbar
-import tkinter.ttk as ttk
+from tkinter import *
+from tkinter import ttk
 from turingMachine import TuringMachine
+from collections import defaultdict
 
 
 class TuringMachineSimulator:
-
     def __init__(self):
         self.window = Tk()
         self.window.title("Turing Machine Simulator")
 
         self.label = Label(self.window, text="1. Tambah\n2. Kurang\n3. Kali\n4. Bagi\n5. Faktorial\n6. Pangkat\n7. Logaritma Biner\n8. Akar Kuadrat")
-        self.label.pack()
+        self.label.pack(anchor='w')
 
         self.menu_entry = Entry(self.window)
-        self.menu_entry.pack()
+        self.menu_entry.pack(anchor='w')
 
-        self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
-        self.submit_button.pack()
+        self.button_frame = Frame(self.window)
+        self.button_frame.pack(anchor='w', pady=(0, 0))
+
+        self.submit_button = Button(self.button_frame, text="Submit", command=self.handle_submit)
+        self.submit_button.pack(side='left')
+
+        self.restart_button = Button(self.button_frame, text="Restart", command=self.restart_program)
+        self.restart_button.pack(side='left', padx=(10, 0))
 
         self.result_label = Label(self.window, text="")
-        self.result_label.pack()
+        self.result_label.pack(anchor='w')
 
         self.canvas_frame = Canvas(self.window, width=800, height=400)
         self.canvas_frame.pack(side='left', fill='both', expand=True)
@@ -50,10 +56,10 @@ class TuringMachineSimulator:
             angka2_entry = Entry(self.window)
             angka2_entry.pack()
 
-            submit_button = Button(self.window, text="Submit", command=lambda: self.perkalian_m(angka1_entry.get(), angka2_entry.get()))
+            submit_button = Button(self.window, text="Submit", command=lambda: self.calculate_multiplication(angka1_entry.get(), angka2_entry.get()))
             submit_button.pack()
 
-    def perkalian_m(self, angka1, angka2):
+    def calculate_multiplication(self, angka1, angka2):
         index = 0
         tape = {}
         if angka1[0] == '-':
@@ -89,20 +95,13 @@ class TuringMachineSimulator:
         index += 1
 
         tm = TuringMachine()
-
         tm.perkalian()
         tm.initialize(tape)
 
-        x1, x2 = 0, 40
-        y1, y2 = 0, 40
-        counter = 0
-
         while not tm.halted:
-            tm.print()
             tm.step()
 
-            self.drawInline(index, x1, x2, y1 + counter * 40, y2 + counter * 40, counter, tm.tape, tm.head)
-            counter += 1
+        result = ''.join([tm.tape[i] for i in range(tm.head + 1, index)]).strip('0')
 
         sumOfZero = 0
         sign = 1
@@ -114,33 +113,26 @@ class TuringMachineSimulator:
         sumOfZero *= sign
         perkalian = sumOfZero
 
-        self.result_label.configure(text=f"Hasil: {perkalian}")
+        self.result_label.configure(text=f"Result: {result}")
 
-        def drawInline(self, inputLength, x1, x2, y1, y2, counter, tape, head):
-            box_width = 40
+        self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
+                        self.canvas_output.winfo_y(), self.canvas_output.winfo_y() + self.canvas_output.winfo_height(), 0, tm.tape, tm.head)
 
-            tape_string = ' '.join(tape[i] for i in range(head - window, head + window + 1))
-            tape_state = (tape_string, self.current_state)
-            self.tape_string.append(tape_state)
+    def drawInline(self, index, x1, x2, y1, y2, counter, tape, head):
+        self.canvas.create_rectangle(x1, y1 + counter * 40, x2, y2 + counter * 40, outline='black')
 
-            print(f'... {tape_string} ... state={self.current_state}')
-            print(f'{" " * (2 * window + 4)}^')
+        for i in range(head - 10, head + 11):
+            if i == head:
+                self.canvas.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40, fill='lightgreen')
+                self.canvas.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
+            else:
+                self.canvas.create_rectangle(x1 + (i - head + 10) * 30, y1 + counter * 40, x1 + (i - head + 11) * 30, y2 + counter * 40)
+                self.canvas.create_text(x1 + (i - head + 10) * 30 + 15, y1 + counter * 40 + (y2 - y1) / 2, text=tape[i])
 
-            for j in range(inputLength):
-                x1 += box_width
-                x2 += box_width
-                box = self.canvas.create_rectangle(x1, y1, x2, y2, fill="white smoke")
-                label = self.canvas.create_text((x1 + x2) / 2, (y1 + y2) / 2, text=tape[j])
-                if head == j:
-                    self.canvas.itemconfig(box, fill="yellow")
-
-            self.canvas.config(scrollregion=self.canvas.bbox('all'))
+    def restart_program(self):
+        self.window.destroy()
+        TuringMachineSimulator()
 
 
-    def run(self):
-        self.window.mainloop()
-
-
-if __name__ == '__main__':
-    simulator = TuringMachineSimulator()
-    simulator.run()
+if __name__ == "__main__":
+    TuringMachineSimulator()
