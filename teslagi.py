@@ -20,14 +20,14 @@ class TuringMachineSimulator:
         self.menu_entry = Entry(self.window)
         self.menu_entry.pack(anchor='w')
 
-        button_frame = Frame(self.window)
-        button_frame.pack(anchor='w', pady=(10, 0))
+        self.button_frame = Frame(self.window)
+        self.button_frame.pack(anchor='w')
 
         self.submit_button = Button(self.window, text="Submit", command=self.handle_submit)
-        self.submit_button.pack(anchor='w', padx=(10, 0))
+        self.submit_button.pack(side='left')
 
         self.restart_button = Button(self.window, text="Restart", command=self.restart_program)
-        self.restart_button.pack(anchor='w')
+        self.restart_button.pack(side='left', padx=(10, 0))
 
         self.canvas_frame = Canvas(self.window, width=400, height=200)
         self.canvas_frame.pack(side='left', fill='both', expand=True)
