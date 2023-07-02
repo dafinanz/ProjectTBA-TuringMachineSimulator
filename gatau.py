@@ -34,10 +34,10 @@ class TuringMachineSimulator:
 
         self.result_label = Label(self.field_frame, text="")
 
-        self.input1 = Label(self.field_frame, text="Angka 1")
         self.angka1_entry = Entry(self.field_frame)
 
-        self.input2 = Label(self.field_frame, text="Angka 2")
+        self.sign = Label(self.field_frame, text="")
+
         self.angka2_entry = Entry(self.field_frame)
 
         self.submit_operation = Button(self.field_frame, text="")
@@ -82,122 +82,127 @@ class TuringMachineSimulator:
             self.result_label.config(text="\nPenjumlahan")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid(row=5, column=0, sticky="w")
-            self.angka2_entry.grid(row=5, column=1, sticky="w")
+            self.sign.config(text="+")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
+            self.angka2_entry.grid(row=4, column=2, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_penjumlahan(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '2':
             self.result_label.config(text="\nPengurangan")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid(row=5, column=0, sticky="w")
-            self.angka2_entry.grid(row=5, column=1, sticky="w")
+            self.sign.config(text="-")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
+            self.angka2_entry.grid(row=4, column=2, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pengurangan(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '3':
             self.result_label.config(text="\nPerkalian")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid(row=5, column=0, sticky="w")
-            self.angka2_entry.grid(row=5, column=1, sticky="w")
+            self.sign.config(text="x")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
+            self.angka2_entry.grid(row=4, column=2, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_perkalian(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '4':
             self.result_label.config(text="\nPembagian")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid(row=5, column=0, sticky="w")
-            self.angka2_entry.grid(row=5, column=1, sticky="w")
+            self.sign.config(text="/")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
+            self.angka2_entry.grid(row=4, column=2, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pembagian(self.angka1_entry.get(), self.angka2_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '5':
             self.result_label.config(text="\nFaktorial")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
+            self.sign.config(text="!")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
             self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
-            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_faktorial(self.angka1_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '6':
             self.result_label.config(text="\nPangkat")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
-            self.angka1_entry.grid(row=4, column=1, sticky="w")
+            self.angka1_entry.grid(row=4, column=0, sticky="w")
 
-            self.input2.grid(row=5, column=0, sticky="w")
-            self.angka2_entry.grid(row=5, column=1, sticky="w")
+            self.sign.config(text="^")
+            self.sign.grid(row=4, column=1, sticky="nsew")
+
+            self.angka2_entry.grid(row=4, column=2, sticky="w")
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
             self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_pangkat(self.angka2_entry.get(), self.angka1_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '7':
             self.result_label.config(text="\nLogaritma Biner")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
+            self.sign.config(text="2 log")
+            self.sign.grid(row=4, column=0, sticky="nsew")
+
             self.angka1_entry.grid(row=4, column=1, sticky="w")
 
-            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
             self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
-            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_logaritma(self.angka1_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         elif menu == '8':
             self.result_label.config(text="\nAkar Kuadrat")
             self.result_label.grid(row=3, column=0, sticky="w")
 
-            self.input1.grid(row=4, column=0, sticky="w")
+            self.sign.config(text="sqrt")
+            self.sign.grid(row=4, column=0, sticky="nsew")
+
             self.angka1_entry.grid(row=4, column=1, sticky="w")
 
-            self.input2.grid_forget()  # Menghilangkan input2 dari tampilan
             self.angka2_entry.grid_forget()  # Menghilangkan angka2_entry dari tampilan
 
             self.angka1_entry.delete(0, END)  # Mengosongkan nilai angka1_entry
-            self.angka2_entry.delete(0, END)  # Mengosongkan nilai angka2_entry
 
             self.submit_operation.config(text="Go", command=lambda: self.calculate_akarkuadrat(self.angka1_entry.get()))
-            self.submit_operation.grid(row=6, column=0, sticky="w")
+            self.submit_operation.grid(row=6, column=1, sticky="nsew", pady=10)
         else:
             self.result_label.config(text="Nomor pilihan tidak valid")
             self.result_label.pack(anchor='w')
@@ -273,7 +278,7 @@ class TuringMachineSimulator:
                 n -= 1
 
         print('Hasil =', sign + str(n))
-        self.result_calculation.config(text=f"{angka1} + {angka2} = {sign + str(n)}")
+        self.result_calculation.config(text=f"Hasil = {sign + str(n)}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
@@ -347,7 +352,7 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        self.result_calculation.config(text=f"{angka1} - {angka2} = {sign + str(n)}")
+        self.result_calculation.config(text=f"Hasil = {sign + str(n)}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
@@ -415,7 +420,7 @@ class TuringMachineSimulator:
         self.result_accept.grid(row=7, column=0, sticky="w")
 
         print('Hasil =', perkalian)
-        self.result_calculation.config(text=f"{angka1} x {angka2} = {perkalian}")
+        self.result_calculation.config(text=f"Hasil = {perkalian}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
@@ -489,7 +494,7 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil =', sign + str(n))
-        self.result_calculation.config(text=f"{angka1} / {angka2} = {sign + str(n)}")
+        self.result_calculation.config(text=f"Hasil = {sign + str(n)}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
@@ -536,7 +541,7 @@ class TuringMachineSimulator:
         sumOfZero *= sign
         faktorial = sumOfZero
         print(f'Hasil: {faktorial}')
-        self.result_calculation.config(text=f"{angka1}! = {faktorial}")
+        self.result_calculation.config(text=f"Hasil = {faktorial}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
@@ -584,7 +589,7 @@ class TuringMachineSimulator:
             elif i == '-0':
                 n -= 1
         print('Hasil = ', n)
-        self.result_calculation.config(text=f"{angka2} ^ {angka1} = {n}")
+        self.result_calculation.config(text=f"Hasil = {n}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
@@ -622,7 +627,7 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'2 Log {angka1} = {result}')
-        self.result_calculation.config(text=f"2 Log {angka1} = {result}")
+        self.result_calculation.config(text=f"Hasil = {result}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
@@ -662,7 +667,7 @@ class TuringMachineSimulator:
 
         result = sumOfZero
         print(f'Hasil = {result}')
-        self.result_calculation.config(text=f"sqrt({angka1}) = {result}")
+        self.result_calculation.config(text=f"Hasil = {result}")
         self.result_calculation.grid(row=8, column=0, sticky="w")
 
         self.drawInline(index, self.canvas_output.winfo_x(), self.canvas_output.winfo_x() + self.canvas_output.winfo_width(),
