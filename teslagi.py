@@ -6,6 +6,7 @@ from turingMachine import TuringMachine
 class TuringMachineSimulator:
     def __init__(self):
         self.window = Tk()
+        self.window.title("Turing Machine Simulator")
         self.window.title = Label(self.window, text="Turing Machine Simulator", width=500, anchor='center', background="#3c8aae", justify='center')
         self.window.title.config(font=("Roboto", 20), foreground="white", padx=10, pady=10)
         self.window.title.pack(pady=(0, 20))
